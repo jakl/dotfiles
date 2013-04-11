@@ -1,0 +1,3 @@
+/ignore * MODES JOINS PARTS QUITS NICKS
+/statusbar window remove time
+/nick jakl

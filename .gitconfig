@@ -1,0 +1,7 @@
+[user]
+	name = James Koval
+	email = james.ross.koval@gmail.com
+[color]
+	ui = true
+[core]
+	excludesfile = /Users/jkoval/.gitignore
