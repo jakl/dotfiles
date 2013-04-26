@@ -5,6 +5,9 @@ function load_dir {
         for i in $(find -L $LOAD_DIR -name '*.sh'); do
             source $i
         done
+        for i in $(find -L $LOAD_DIR -name '*.bashrc'); do
+            source $i
+        done
     fi
 }
 
