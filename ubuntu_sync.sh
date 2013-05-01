@@ -8,7 +8,7 @@ function sync_favorite_apps {
   sudo npm install -g coffee-script
 
   #Remove unused ones too
-  sudo apt-get purge -y libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-emailmerge libreoffice-gnome libreoffice-gtk libreoffice-help-en-us libreoffice-impress impresslibreoffice-math libreoffice-style-human libreoffice-style-tango libreoffice-writer thunderbird firefox
+  sudo apt-get purge -y libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-emailmerge libreoffice-gnome libreoffice-gtk libreoffice-help-en-us libreoffice-impress libreoffice-math libreoffice-style-human libreoffice-style-tango libreoffice-writer thunderbird firefox
 }
 
 function install_aircrack {
