@@ -1,24 +1,26 @@
 BIN=$HOME/bin
 WORKSPACE=$HOME/workspace
-DOTFILES=$PWD/`dirname $0`
+GIT_BD=$WORKSPACE/git-bd
+DOTFILES=$PWD/`dirname $0 | sed 's|^\./||'`
 
 function make_environment_dirs {
   mkdir -p $BIN
-  mkdir -p $WORKSPACE/git-bd
+  mkdir -p $GIT_BD
   mkdir -p $HOME/.bashrc.d
   mkdir -p $HOME/.vim
 }
 
 function obtain_git_new_workdir_command {
   #Copy git-new-workdir from master git repo unless it exists
-  command -v git-new-workdir >/dev/null || curl https://raw.github.com/git/git/master/contrib/workdir/git-new-workdir > $BIN/git-new-workdir
+  command -v git-new-workdir || curl https://raw.github.com/git/git/master/contrib/workdir/git-new-workdir > $BIN/git-new-workdir
 }
 
-function obtain_git_branch_dir {
-  #Clone and use nathan's awesome git branch directory command
-  test ! -e $WORKSPACE/git-bd/git-bd && git clone https://github.com/nnutter/git-bd $WORKSPACE/git-bd
-  ln -s $WORKSPACE/git-bd/git-bd $BIN/
-  ln -s $WORKSPACE/git-bd/bd.bashrc $HOME/.bashrc.d/
+function sync_git_branch_dir {
+  #Clone, update, and use nathan's awesome git branch directory command
+  test ! -e $GIT_BD/git-bd && git clone https://github.com/nnutter/git-bd $GIT_BD
+  git --git-dir=$GIT_BD/.git --work-tree=$GIT_BD pull
+  ln -s $GIT_BD/git-bd $BIN/
+  ln -s $GIT_BD/bd.bashrc $HOME/.bashrc.d/
 }
 
 function sync_config_files {
@@ -27,7 +29,7 @@ function sync_config_files {
 
   #Symlink all config files from this repo into their proper location
   local ignore_files='README.md|sync.sh|.swp|.git/'
-  local sync_files=`find . -type f | egrep -v "($ignore_files)" | sed 's|^\./||'`
+  local sync_files=`find $DOTFILES -type f | egrep -v "($ignore_files)" | sed "s|^$DOTFILES/||"`
 
   for i in $sync_files; do
     ln -s $DOTFILES/$i $HOME/$i
@@ -37,8 +39,8 @@ function sync_config_files {
 function sync_environment {
   make_environment_dirs
   obtain_git_new_workdir_command
-  obtain_git_branch_dir
+  sync_git_branch_dir
   sync_config_files
 }
 
-sync_environment 2> /dev/null
+sync_environment &> /dev/null
