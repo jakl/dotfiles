@@ -13,6 +13,7 @@ function make_environment_dirs {
 function obtain_git_new_workdir_command {
   #Copy git-new-workdir from master git repo unless it exists
   command -v git-new-workdir || curl https://raw.github.com/git/git/master/contrib/workdir/git-new-workdir > $BIN/git-new-workdir
+  chmod +x $BIN/git-new-workdir
 }
 
 function sync_git_branch_dir {

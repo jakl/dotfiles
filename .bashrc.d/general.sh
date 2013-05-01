@@ -73,6 +73,8 @@ PS1="\[\033[G\]$PS1" # left align prompt, WARNING: will overwrite output that do
 HISTSIZE=100000
 HISTFILESIZE=100000
 
+PATH=$PATH:$HOME/bin
+
 tunnel () {
   if [ $# = 4 ]; then
     LOCAL_PORT=$1
