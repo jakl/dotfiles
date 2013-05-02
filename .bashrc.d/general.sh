@@ -36,6 +36,7 @@ alias nr='repl.history'
 alias irc='irssi -n jakl -c irc.freenode.com'
 alias cb='cd ~/.bashrc.d/'
 alias ports='sudo fuser -n tcp {1..10000}'
+alias tmux='tmux attach'
 
 alias ..='cd ..'
 alias ...='cd ../..'
