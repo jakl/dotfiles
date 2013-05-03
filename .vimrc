@@ -77,9 +77,9 @@ nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
-"ctrl+n/p to switch buffers, same as irssi
-nmap <silent> <C-n> :bp<CR>
-nmap <silent> <C-p> :bn<CR>
+"ctrl+n/p to switch buffers, same as irssi and tmux, next/previous
+nmap <silent> <C-p> :bp<CR>
+nmap <silent> <C-n> :bn<CR>
 
 "Backslash n to open NerdTree
 map <silent> <leader>n :NERDTreeToggle<CR>
