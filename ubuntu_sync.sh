@@ -4,8 +4,8 @@ function sync_favorite_repos {
 }
 
 function sync_favorite_apps {
-  sudo apt-get install -y aptitude git chromium-browser vim-gnome pavucontrol curl irssi nmap mumble g++ ssh python-software-properties nodejs npm
-  sudo npm install -g coffee-script
+  sudo apt-get install -y aptitude git chromium-browser vim-gnome pavucontrol curl irssi nmap mumble g++ ssh python-software-properties nodejs npm chromium-codecs-ffmpeg-extra
+  sudo npm install -g coffee-script ecstatic
   sudo apt-get purge -y libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-emailmerge libreoffice-gnome libreoffice-gtk libreoffice-help-en-us libreoffice-impress libreoffice-math libreoffice-style-human libreoffice-style-tango libreoffice-writer thunderbird firefox
   sudo aptitude update -y
   sudo aptitude full-upgrade -y
