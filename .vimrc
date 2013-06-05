@@ -18,6 +18,9 @@ Bundle 'danro/rename.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mileszs/ack.vim'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-scripts/dbext.vim'
+Bundle 'majutsushi/tagbar'
 
           " ~/.vim/undodir/      must exist
 set undodir=~/.vim/undodir     " persistent undos between editing sessions
@@ -83,6 +86,7 @@ nmap <silent> <C-n> :bn<CR>
 
 "Backslash n to open NerdTree
 map <silent> <leader>n :NERDTreeToggle<CR>
+map <silent> <leader>t :TagbarToggle<CR>
 
 map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr> "\z will close all folds at current level
 
