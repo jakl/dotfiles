@@ -1,28 +1,54 @@
-"Run these two commands from your home directory to make this vimrc work:
-"git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-"mkdir ~/.vim/undodir
+" #### DO THIS FIRST ####
+"     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+"     mkdir ~/.vim/undodir
+" #######################
 
 "Must `apt-get install git` and run above clone. These Bundle commands won't work otherwise.
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'kchmck/vim-coffee-script'
+" BundleInstall! updates all bundles
+" BundleClean!   removes data of old bundles
+
 Bundle 'scrooloose/nerdtree'
+" \n to open file browser
+
 Bundle 'fholgado/minibufexpl.vim'
+" :tmi<tab> to toggle showing buffers like tabs
+
+Bundle 'danro/rename.vim'
+" :Rename new_file_name
+
+Bundle 'mileszs/ack.vim'
+" :Ack 'any \w* search pattern'
+
+Bundle 'majutsushi/tagbar'
+" \t shows method names for current file/class/module
+
+Bundle 'tpope/vim-surround'
+" cs'<div> changes single quotes to div tags
+
+Bundle 'tomtom/tcomment_vim'
+" gc toggles comments
+
+" Highlight and properly indent more filetypes
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'juvenn/mustache'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'pangloss/vim-javascript'
-Bundle 'danro/rename.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'mileszs/ack.vim'
-Bundle 'tsaleh/vim-matchit'
-Bundle 'vim-scripts/dbext.vim'
-Bundle 'majutsushi/tagbar'
 
-          " ~/.vim/undodir/      must exist
+" Intuitive behavior fixes
+Bundle 'tpope/vim-repeat'
+Bundle 'tsaleh/vim-matchit'
+
+" Cool plugins I havn't learned/made habit yet
+"Bundle 'vim-scripts/dbext.vim'
+"Bundle 'tpope/vim-fugitive'
+"Bundle 'wincent/Command-T' causes segfault
+
+          " ~/.vim/undodir/      directory must exist
 set undodir=~/.vim/undodir     " persistent undos between editing sessions
 set undofile                   " Doesn't work in ubuntu 10.04
 
