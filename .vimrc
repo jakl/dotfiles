@@ -19,8 +19,8 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'danro/rename.vim'
 " :Rename new_file_name
 
-Bundle 'mileszs/ack.vim'
-" :Ack 'any \w* search pattern'
+Bundle 'rking/ag.vim'
+" :Ag 'any \w* search pattern'
 
 Bundle 'majutsushi/tagbar'
 " \t shows method names for current file/class/module

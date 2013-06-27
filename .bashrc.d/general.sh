@@ -42,6 +42,7 @@ alias gsh='git show --date=relative --color'
 alias gco='git checkout'
 alias gmd='git fetch && git merge origin/deploy'
 alias gmb='git fetch && git merge origin/`git symbolic-ref --short -q HEAD`' #merge a branch named after local branch, from origin
+alias gsq='git merge --squash'
 
 alias ..='cd ..'
 alias ...='cd ../..'
