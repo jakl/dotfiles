@@ -1,5 +1,5 @@
 function sync_favorite_apps {
-  brew install tmux wget aircrack-ng coreutils curl reattach-to-user-namespace rbenv ruby-build the_silver_searcher
+  brew install tmux wget aircrack-ng coreutils curl reattach-to-user-namespace rbenv ruby-build the_silver_searcher irssi nmap
   brew install git --with-pcre
   brew install vim --override-system-vi --with-perl --with-python --with-ruby
   brew link curl --force
