@@ -30,6 +30,11 @@ function link_coreutils {
   fgrep -x $MAN_CORE_UTILS $LOCAL_BASHRC || echo $MAN_CORE_UTILS | tee -a $LOCAL_BASHRC
 }
 
+function node_js {
+  echo Download node from nodejs.org
+  echo sudo chown $USER /usr/local/lib/node_modules/
+}
+
 function main {
   sync_favorite_apps
   update_bashrc
@@ -38,3 +43,4 @@ function main {
 }
 
 main &>/dev/null
+node_js
