@@ -21,10 +21,20 @@ function update_profile {
   fgrep -x "$HOME_PROFILE" $GLOBAL_PROFILE || echo $HOME_PROFILE | sudo tee -a $GLOBAL_PROFILE
 }
 
+function link_coreutils {
+  local LOCAL_BASHRC=$HOME/.bashrc.d/local.sh
+  local CORE_UTILS='PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH'
+  local MAN_CORE_UTILS='MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH'
+  touch $LOCAL_BASHRC
+  fgrep -x $CORE_UTILS $LOCAL_BASHRC || echo $CORE_UTILS | tee -a $LOCAL_BASHRC
+  fgrep -x $MAN_CORE_UTILS $LOCAL_BASHRC || echo $MAN_CORE_UTILS | tee -a $LOCAL_BASHRC
+}
+
 function main {
   sync_favorite_apps
   update_bashrc
   update_profile
+  link_coreutils
 }
 
 main &>/dev/null
