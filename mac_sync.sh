@@ -30,17 +30,29 @@ function link_coreutils {
   fgrep -x $MAN_CORE_UTILS $LOCAL_BASHRC || echo $MAN_CORE_UTILS | tee -a $LOCAL_BASHRC
 }
 
-function node_js {
+function node_js_setup {
   echo Download node from nodejs.org
   echo sudo chown $USER /usr/local/lib/node_modules/
 }
 
-function main {
+function rbenv_setup {
+  echo Download a good ruby from rbenv install -l
+  echo Maybe rbenv install 2.0.0-p247 is good
+  echo rbenv global 2.0.0-p247
+  echo rbenv rehash
+}
+
+function main_automation {
   sync_favorite_apps
   update_bashrc
   update_profile
   link_coreutils
 }
 
-main &>/dev/null
-node_js
+function main {
+  main_automation &>/dev/null
+  node_js_setup
+  rbenv_setup
+}
+
+main
