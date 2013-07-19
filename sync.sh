@@ -65,6 +65,7 @@ function main {
   sync_environment &> /dev/null
   source $HOME/.bashrc
   uname -a | grep Ubuntu >/dev/null && bash $DOTFILES/ubuntu_sync.sh
+  uname -a | grep MacBook >/dev/null && bash $DOTFILES/mac_sync.sh
 }
 
 main
