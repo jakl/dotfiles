@@ -50,8 +50,7 @@ Bundle 'tsaleh/vim-matchit'
 
           " ~/.vim/undodir/      directory must exist
 set undodir=~/.vim/undodir     " persistent undos between editing sessions
-set undofile                   " Doesn't work in ubuntu 10.04
-
+set undofile
 set number                     " line numbers
 set tabstop=2                  " spaces for a tab
 set shiftwidth=2               " spaces for indent
@@ -122,6 +121,7 @@ nnoremap k gk
 
 "Alternate esc characters
 imap jj <Esc>
+imap kk <Esc>
 
 "ctrl+c in visual mode will copy to mac system buffer
 vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
