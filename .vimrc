@@ -81,6 +81,7 @@ set backspace=indent,eol,start " Always allow backspace
 set wildmenu                   " Use nice tab autocomplete when opening new files
 set wildmode=list:longest      " with :sp or :vs for horizontal and vertical splits
 set colorcolumn=80             " visually enforce the 80 column limit while coding
+set scrolloff=8                " keep some lines of context above/below cursor
 
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e") "Delete trailing whitespace on write
 function! Preserve(command)
