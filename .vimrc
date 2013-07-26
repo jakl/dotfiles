@@ -80,6 +80,7 @@ set foldlevel=20               " Don't close all folds immediately
 set backspace=indent,eol,start " Always allow backspace
 set wildmenu                   " Use nice tab autocomplete when opening new files
 set wildmode=list:longest      " with :sp or :vs for horizontal and vertical splits
+set colorcolumn=80             " visually enforce the 80 column limit while coding
 
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e") "Delete trailing whitespace on write
 function! Preserve(command)

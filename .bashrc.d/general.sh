@@ -37,6 +37,7 @@ alias gdm='gd --diff-filter=M' #modified contents only, not renames or deletes
 alias gds='gd --staged'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
 alias glm='gl --author=koval'
+alias glg='gl --no-merges'
 alias gph='git push origin HEAD'
 alias gsh='git show --date=relative --color'
 alias gco='git checkout'
