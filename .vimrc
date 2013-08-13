@@ -29,6 +29,10 @@ Bundle 'tomtom/tcomment_vim'
 " gc toggles comments
 
 Bundle 'thoughtbot/vim-rspec'
+" \f runs rspec on current file
+
+Bundle 'tpope/vim-dispatch'
+" Support for async commands in tmux splits
 
 " Highlight and properly indent more filetypes
 Bundle 'kchmck/vim-coffee-script'
@@ -101,6 +105,7 @@ inoremap <TAB> <C-P>
 map <leader>f :call RunCurrentSpecFile()<CR>
 map <leader>s :call RunNearestSpec()<CR>
 map <leader>a :call RunAllSpecs()<CR>
+let g:rspec_command = "Start! spring rspec -- {spec} ; bash"
 
 "r replaces visual selection with yank's buffer
 vmap <silent> r "_dP
