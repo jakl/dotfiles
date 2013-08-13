@@ -26,6 +26,7 @@ alias tmux='tmux attach'
 alias rollback='rake db:rollback && RAILS_ENV=test rake db:rollback'
 alias migrate='rake db:migrate && RAILS_ENV=test rake db:migrate'
 alias tabs2spaces='column -t -s"	"'
+alias rt='rails c test'
 
 #### GIT ####
 alias gs='git status'

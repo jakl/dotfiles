@@ -10,9 +10,6 @@ Bundle 'gmarik/vundle'
 " BundleInstall! updates all bundles
 " BundleClean!   removes data of old bundles
 
-Bundle 'scrooloose/nerdtree'
-" \n to open file browser
-
 Bundle 'fholgado/minibufexpl.vim'
 " :tmi<tab> to toggle showing buffers like tabs
 
@@ -30,6 +27,8 @@ Bundle 'tpope/vim-surround'
 
 Bundle 'tomtom/tcomment_vim'
 " gc toggles comments
+
+Bundle 'thoughtbot/vim-rspec'
 
 " Highlight and properly indent more filetypes
 Bundle 'kchmck/vim-coffee-script'
@@ -98,25 +97,30 @@ endfunction
 "use ctrl+v tab if you need an actual tab
 inoremap <TAB> <C-P>
 
+" Rspec.vim mappings
+map <leader>f :call RunCurrentSpecFile()<CR>
+map <leader>s :call RunNearestSpec()<CR>
+map <leader>a :call RunAllSpecs()<CR>
+
 "r replaces visual selection with yank's buffer
 vmap <silent> r "_dP
 
 "Use ctrl+h,j,k,l to move among split buffers
 nmap <silent> <C-k> :wincmd k<CR>
-
 nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
 "ctrl+n/p to switch buffers, same as irssi and tmux, next/previous
-nmap <silent> <C-p> :bp<CR>
 nmap <silent> <C-n> :bn<CR>
+nmap <silent> <C-p> :bp<CR>
 
 "Backslash n to open NerdTree
 map <silent> <leader>n :NERDTreeToggle<CR>
 map <silent> <leader>t :TagbarToggle<CR>
 
-map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr> "\z will close all folds at current level
+"\z will close all folds at current level
+map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr>
 
 "j and k move inside wrapped lines as well
 nnoremap j gj
