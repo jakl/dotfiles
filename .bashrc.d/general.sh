@@ -23,10 +23,13 @@ alias nr='repl.history'
 alias cb='cd ~/.bashrc.d/'
 alias ports='sudo fuser -n tcp {1..10000}'
 alias tmux='tmux attach'
+alias tabs2spaces='column -t -s"	"'
+
+#### RAILS ####
 alias rollback='rake db:rollback && RAILS_ENV=test rake db:rollback'
 alias migrate='rake db:migrate && RAILS_ENV=test rake db:migrate'
-alias tabs2spaces='column -t -s"	"'
 alias rt='rails c test'
+alias rc='spring rails console'
 
 #### GIT ####
 alias gs='git status'
