@@ -26,10 +26,11 @@ alias tmux='tmux attach'
 alias tabs2spaces='column -t -s"	"'
 
 #### RAILS ####
-alias rollback='rake db:rollback && RAILS_ENV=test rake db:rollback'
-alias migrate='rake db:migrate && RAILS_ENV=test rake db:migrate'
+alias rollback='spring rake db:rollback && RAILS_ENV=test spring rake db:rollback'
+alias migrate='spring rake db:migrate && RAILS_ENV=test spring rake db:migrate'
 alias rt='rails c test'
 alias rc='spring rails console'
+alias dieschema='git reset db/schema.rb && git checkout db/schema.rb'
 
 #### GIT ####
 alias gs='git status'

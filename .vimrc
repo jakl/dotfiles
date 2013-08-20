@@ -10,9 +10,6 @@ Bundle 'gmarik/vundle'
 " BundleInstall! updates all bundles
 " BundleClean!   removes data of old bundles
 
-Bundle 'fholgado/minibufexpl.vim'
-" :tmi<tab> to toggle showing buffers like tabs
-
 Bundle 'danro/rename.vim'
 " :Rename new_file_name
 
@@ -69,7 +66,6 @@ set ignorecase                 " ignore case searches
 set incsearch                  " search while typing
 set hlsearch                   " highlight searches
 set pastetoggle=<F2>           " f2 for paste mode, disabling indent
-nmap <F3> :set invnumber<CR>
 set mouse=a                    " mouse compatability
 set autoread                   " reload changed files when unedited
 set linebreak                  " wrap lines at natural word dividers
@@ -102,9 +98,9 @@ endfunction
 inoremap <TAB> <C-P>
 
 " Rspec.vim mappings
-map <leader>f :call RunCurrentSpecFile()<CR>
-map <leader>s :call RunNearestSpec()<CR>
-map <leader>a :call RunAllSpecs()<CR>
+map <silent> <leader>f :call RunCurrentSpecFile()<CR>
+map <silent> <leader>s :call RunNearestSpec()<CR>
+map <silent> <leader>a :call RunAllSpecs()<CR>
 let g:rspec_command = "Start! spring rspec -- {spec} ; bash"
 
 "r replaces visual selection with yank's buffer
@@ -127,6 +123,15 @@ map <silent> <leader>t :TagbarToggle<CR>
 "\z will close all folds at current level
 map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr>
 
+"yank file name
+map <silent> <leader>y :let @" = expand("%")<cr>
+
+"disable line numbers
+nmap <F3> :set invnumber<CR>
+
+"reload vimrc
+map <silent> <leader>r :source $MYVIMRC<cr>
+
 "j and k move inside wrapped lines as well
 nnoremap j gj
 nnoremap k gk
@@ -134,6 +139,9 @@ nnoremap k gk
 "Alternate esc characters
 imap jj <Esc>
 imap kk <Esc>
+
+"crontab must be edited in place
+au BufEnter /private/tmp/crontab.* setl backupcopy=yes
 
 "ctrl+c in visual mode will copy to mac system buffer
 vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
@@ -147,7 +155,7 @@ vnoremap <silent> * :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " Create parent directories on save if they don't exist
-function s:MkNonExDir(file, buf)
+function! s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
         if !isdirectory(dir)
