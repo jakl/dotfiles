@@ -1,53 +1,82 @@
 " #### DO THIS FIRST ####
-"     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+"     # install git: brew install git # apt-get install git
+"     git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 "     mkdir ~/.vim/undodir
 " #######################
 
-"Must `apt-get install git` and run above clone. These Bundle commands won't work otherwise.
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
 " BundleInstall! updates all bundles
 " BundleClean!   removes data of old bundles
 
-Bundle 'danro/rename.vim'
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundleCheck
+
+" Recommended to install from shougo, handles asyn-background jobs
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+NeoBundle 'Shougo/unite.vim'
+" Search/select/preview - to the maximum awesome - files/buffers/yanks/...
+
+NeoBundle 'danro/rename.vim'
 " :Rename new_file_name
 
-Bundle 'rking/ag.vim'
+NeoBundle 'rking/ag.vim'
 " :Ag 'any \w* search pattern'
 
-Bundle 'majutsushi/tagbar'
+NeoBundle 'majutsushi/tagbar'
 " \t shows method names for current file/class/module
 
-Bundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-surround'
 " cs'<div> changes single quotes to div tags
 
-Bundle 'tomtom/tcomment_vim'
+NeoBundle 'tomtom/tcomment_vim'
 " gc toggles comments
 
-Bundle 'thoughtbot/vim-rspec'
+NeoBundle 'thoughtbot/vim-rspec'
 " \f runs rspec on current file
 
-Bundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-dispatch'
 " Support for async commands in tmux splits
 
+NeoBundle 'Shougo/neocomplete.vim'
+" Faster autocomplete - requires +lua
+
+NeoBundle 'Shougo/neosnippet'
+" Autocomplete blocks of commonly typed code structures
+
+NeoBundle 'honza/vim-snippets.git'
+" Aggregation of community contributed snippets
+
 " Highlight and properly indent more filetypes
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'juvenn/mustache'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'wavded/vim-stylus'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'pangloss/vim-javascript'
-Bundle 'vim-ruby/vim-ruby'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'juvenn/mustache'
+NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'wavded/vim-stylus'
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'vim-ruby/vim-ruby'
 
 " Intuitive behavior fixes
-Bundle 'tpope/vim-repeat'
-Bundle 'tsaleh/vim-matchit'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tsaleh/vim-matchit'
 
 " Cool plugins I havn't learned/made habit yet
-"Bundle 'vim-scripts/dbext.vim'
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'wincent/Command-T' causes segfault
+"NeoBundle 'vim-scripts/dbext.vim'
+"NeoBundle 'tpope/vim-fugitive'
 
           " ~/.vim/undodir/      directory must exist
 set undodir=~/.vim/undodir     " persistent undos between editing sessions
@@ -82,8 +111,34 @@ set wildmenu                   " Use nice tab autocomplete when opening new file
 set wildmode=list:longest      " with :sp or :vs for horizontal and vertical splits
 set colorcolumn=80             " visually enforce the 80 column limit while coding
 set scrolloff=8                " keep some lines of context above/below cursor
+set splitbelow
+set splitright
+let g:neocomplete#enable_at_startup = 1 " better autocomplete enabled
+let g:neocomplete#enable_smart_case = 1 " no idea ... sounds good right?
+let g:unite_source_grep_command="ag" " use the silver searcher, speedy
+let g:unite_source_grep_default_opts="-i --nocolor --nogroup --hidden"
+let gneosnippet#snippets_directory='~/.vim/bundle/vim-snippets, ~/.vim/snippets'
 
-autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e") "Delete trailing whitespace on write
+" search buffers
+nnoremap <space>b :Unite -quick-match buffer<cr>
+
+" Save and query yank history
+let g:unite_source_history_yank_enable = 1
+nnoremap <space>y :Unite history/yank<cr>
+
+" search file names
+nnoremap <space>f :Unite -auto-preview -start-insert file_rec/async<cr>
+
+" search file contents
+nnoremap <space>/ :Unite -auto-preview -start-insert grep:.<cr>
+
+" Snippet, complete code blocks
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" Delete trailing whitespace on write
+autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 function! Preserve(command)
     let _s=@/
     let l = line(".")
@@ -93,9 +148,9 @@ function! Preserve(command)
     call cursor(l, c)
 endfunction
 
-"complete current word with tab, looking upwards for matches
+"complete current word with tab, looking down for matches
 "use ctrl+v tab if you need an actual tab
-inoremap <TAB> <C-P>
+inoremap <TAB> <C-N>
 
 " Rspec.vim mappings
 map <silent> <leader>f :call RunCurrentSpecFile()<CR>
@@ -116,12 +171,14 @@ nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-n> :bn<CR>
 nmap <silent> <C-p> :bp<CR>
 
-"Backslash n to open NerdTree
-map <silent> <leader>n :NERDTreeToggle<CR>
-map <silent> <leader>t :TagbarToggle<CR>
-
 "\z will close all folds at current level
 map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr>
+
+" \c will copy current file to new name in its directory
+map <leader>c :!cp % $(dirname %)/
+
+" \w will save! current file
+map <silent> <leader>w :w!<cr>
 
 "yank file name
 map <silent> <leader>y :let @" = expand("%")<cr>
@@ -135,6 +192,12 @@ map <silent> <leader>r :source $MYVIMRC<cr>
 "j and k move inside wrapped lines as well
 nnoremap j gj
 nnoremap k gk
+
+" no more annoying command history popup
+nnoremap q: :
+
+" no more annoying ... whatever shift k did
+nnoremap K <NOP>
 
 "Alternate esc characters
 imap jj <Esc>
@@ -167,3 +230,32 @@ augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+" Handle paste more intelligently - cmd+v or ctrl+v in insert mode
+if exists('$ITERM_PROFILE') || exists('$TMUX')
+  let &t_ti = "\<Esc>[?2004h" . &t_ti
+  let &t_te = "\<Esc>[?2004l" . &t_te
+
+  function! XTermPasteBegin(ret)
+    set pastetoggle=<Esc>[201~
+    set paste
+    return a:ret
+  endfunction
+
+  execute "set <f28>=\<Esc>[200~"
+  execute "set <f29>=\<Esc>[201~"
+  map <expr> <f28> XTermPasteBegin("i")
+  imap <expr> <f28> XTermPasteBegin("")
+  vmap <expr> <f28> XTermPasteBegin("c")
+  cmap <f28> <nop>
+  cmap <f29> <nop>
+end
+
+" Turn cursor into a bar when in insert mode
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
