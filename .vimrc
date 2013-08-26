@@ -31,6 +31,9 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/unite.vim'
 " Search/select/preview - to the maximum awesome - files/buffers/yanks/...
 
+NeoBundle 'itchyny/lightline.vim'
+" Better status bars
+
 NeoBundle 'danro/rename.vim'
 " :Rename new_file_name
 
@@ -111,8 +114,9 @@ set wildmenu                   " Use nice tab autocomplete when opening new file
 set wildmode=list:longest      " with :sp or :vs for horizontal and vertical splits
 set colorcolumn=80             " visually enforce the 80 column limit while coding
 set scrolloff=8                " keep some lines of context above/below cursor
-set splitbelow
+set splitbelow                 " unsurprising splits
 set splitright
+set laststatus=2               " status always
 let g:neocomplete#enable_at_startup = 1 " better autocomplete enabled
 let g:neocomplete#enable_smart_case = 1 " no idea ... sounds good right?
 let g:unite_source_grep_command="ag" " use the silver searcher, speedy
@@ -247,3 +251,20 @@ if exists('$ITERM_PROFILE') || exists('$TMUX')
   cmap <f28> <nop>
   cmap <f29> <nop>
 end
+
+" Config for status bar
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'filename'], [ 'modified' ] ]
+      \ },
+      \ 'inactive': {
+      \   'left': [ [ 'filename'], [ 'modified' ] ]
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
+
+" Allow pretty colors
+if !has('gui_running')
+  set t_Co=256
+endif

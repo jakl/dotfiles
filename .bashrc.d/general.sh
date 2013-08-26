@@ -89,6 +89,8 @@ HISTFILESIZE=100000
 
 PATH=$PATH:$HOME/bin
 
+TERM=xterm-256color
+
 tunnel () {
   if [ $# = 4 ]; then
     LOCAL_PORT=$1
