@@ -1,5 +1,5 @@
 " #### DO THIS FIRST ####
-"     # install git: brew install git # apt-get install git
+"     # install git # brew install git # apt-get install git
 "     git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 "     mkdir ~/.vim/undodir
 " #######################
@@ -77,6 +77,10 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tsaleh/vim-matchit'
 
+NeoBundle 'tpope/vim-rails'
+" Helpful vim shortcuts for navigating and generating rails files
+
+
 " Cool plugins I havn't learned/made habit yet
 "NeoBundle 'vim-scripts/dbext.vim'
 "NeoBundle 'tpope/vim-fugitive'
@@ -117,6 +121,7 @@ set scrolloff=8                " keep some lines of context above/below cursor
 set splitbelow                 " unsurprising splits
 set splitright
 set laststatus=2               " status always
+set lazyredraw                 " redraw async so UI is responsive during draw lag
 let g:neocomplete#enable_at_startup = 1 " better autocomplete enabled
 let g:neocomplete#enable_smart_case = 1 " no idea ... sounds good right?
 let g:unite_source_grep_command="ag" " use the silver searcher, speedy
@@ -255,10 +260,12 @@ end
 " Config for status bar
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'filename'], [ 'modified' ] ]
+      \   'left': [ [ 'filename'] ],
+      \   'right': [ [ 'modified' ] ]
       \ },
       \ 'inactive': {
-      \   'left': [ [ 'filename'], [ 'modified' ] ]
+      \   'left': [ [ 'filename'] ],
+      \   'right': [ [ 'modified' ] ]
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '|', 'right': '|' }

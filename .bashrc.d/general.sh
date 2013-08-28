@@ -8,7 +8,7 @@ alias upgrade='sudo apt-get dist-upgrade'
 
 USER_NAME=jakl
 alias irc='irssi -n $USER_NAME -c irc.freenode.com'
-alias v='vi'
+alias v='vi -O'
 alias c='cd'
 alias l='ls'
 alias ls='ls -hF --group-directories-first --color=auto --sort=extension'
