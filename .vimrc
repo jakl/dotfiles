@@ -80,6 +80,8 @@ NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'tpope/vim-rails'
 " Helpful vim shortcuts for navigating and generating rails files
 
+NeoBundle 'Shougo/vimfiler.vim'
+" File Browser in Unite
 
 " Cool plugins I havn't learned/made habit yet
 "NeoBundle 'vim-scripts/dbext.vim'
@@ -117,6 +119,7 @@ set backspace=indent,eol,start " Always allow backspace
 set wildmenu                   " Use nice tab autocomplete when opening new files
 set wildmode=list:longest      " with :sp or :vs for horizontal and vertical splits
 set colorcolumn=80             " visually enforce the 80 column limit while coding
+hi ColorColumn ctermbg=darkgray
 set scrolloff=8                " keep some lines of context above/below cursor
 set splitbelow                 " unsurprising splits
 set splitright
@@ -127,6 +130,7 @@ let g:neocomplete#enable_smart_case = 1 " no idea ... sounds good right?
 let g:unite_source_grep_command="ag" " use the silver searcher, speedy
 let g:unite_source_grep_default_opts="-i --nocolor --nogroup --hidden"
 let gneosnippet#snippets_directory='~/.vim/bundle/vim-snippets, ~/.vim/snippets'
+let g:vimfiler_as_default_explorer = 1 "VimFiler in Unite is default explorer
 
 " search buffers
 nnoremap <space>b :Unite -quick-match buffer<cr>
