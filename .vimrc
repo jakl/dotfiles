@@ -72,6 +72,7 @@ NeoBundle 'wavded/vim-stylus'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'vim-scripts/confluencewiki.vim'
 
 " Intuitive behavior fixes
 NeoBundle 'tpope/vim-repeat'
@@ -279,3 +280,8 @@ let g:lightline = {
 if !has('gui_running')
   set t_Co=256
 endif
+
+" Autodetect confluence markup better
+augroup filetypedetect
+  au BufRead,BufNewFile *.confluencewiki set filetype=confluencewiki
+augroup END
