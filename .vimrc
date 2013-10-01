@@ -247,6 +247,9 @@ augroup END
 
 " Handle paste more intelligently - cmd+v or ctrl+v in insert mode
 if exists('$ITERM_PROFILE') || exists('$TMUX')
+  let &t_ti = "\<Esc>[?2004h" . &t_ti
+  let &t_te = "\<Esc>[?2004l" . &t_te
+
   function! XTermPasteBegin(ret)
     set pastetoggle=<Esc>[201~
     set paste
