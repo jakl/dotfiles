@@ -185,7 +185,7 @@ nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-n> :bn<CR>
 nmap <silent> <C-p> :bp<CR>
 
-"\z will close all folds at current level
+"\z will close all folds at current level, zR opens all folds
 map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr>
 
 " \c will copy current file to new name in its directory
