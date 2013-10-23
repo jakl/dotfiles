@@ -84,11 +84,15 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'Shougo/vimfiler.vim'
 " File Browser in Unite
 
+NeoBundle 'nathanaelkane/vim-indent-guides'
+" Color each indentation level
+
+
 " Cool plugins I havn't learned/made habit yet
 "NeoBundle 'vim-scripts/dbext.vim'
 "NeoBundle 'tpope/vim-fugitive'
 
-          " ~/.vim/undodir/      directory must exist
+" ~/.vim/undodir/      directory must exist
 set undodir=~/.vim/undodir     " persistent undos between editing sessions
 set undofile
 set number                     " line numbers
@@ -134,6 +138,8 @@ let g:unite_source_grep_command="ag" " use the silver searcher, speedy
 let g:unite_source_grep_default_opts="-i --nocolor --nogroup --hidden"
 let gneosnippet#snippets_directory='~/.vim/bundle/vim-snippets, ~/.vim/snippets'
 let g:vimfiler_as_default_explorer = 1 "VimFiler in Unite is default explorer
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
 
 " search buffers
 nnoremap <space>b :Unite -quick-match buffer<cr>
@@ -156,12 +162,12 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " Delete trailing whitespace on write
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 function! Preserve(command)
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    execute a:command
-    let @/=_s
-    call cursor(l, c)
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  execute a:command
+  let @/=_s
+  call cursor(l, c)
 endfunction
 
 "complete current word with tab, looking down for matches
@@ -228,23 +234,23 @@ vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
 
 " Search for selected text with *
 vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+      \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+      \gvy/<C-R><C-R>=substitute(
+      \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+      \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " Create parent directories on save if they don't exist
 function! s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
     endif
+  endif
 endfunction
 augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+  autocmd!
+  autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
 " Handle paste more intelligently - cmd+v or ctrl+v in insert mode
