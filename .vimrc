@@ -87,6 +87,9 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 " Color each indentation level
 
+NeoBundle 'vim-scripts/bufkill.vim'
+" :BD delete buffers without closing window splits
+
 
 " Cool plugins I havn't learned/made habit yet
 "NeoBundle 'vim-scripts/dbext.vim'
@@ -190,8 +193,9 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
 "ctrl+n/p to switch buffers, same as irssi and tmux, next/previous
-nmap <silent> <C-n> :bn<CR>
-nmap <silent> <C-p> :bp<CR>
+nmap <silent> <C-n> :BF<CR>
+nmap <silent> <C-p> :BB<CR>
+nmap <silent> <C-c> :BD<CR>
 
 "\z will close all folds at current level, zR opens all folds
 map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr>
