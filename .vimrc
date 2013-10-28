@@ -121,17 +121,6 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" Delete trailing whitespace on write
-autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
-function! Preserve(command)
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  execute a:command
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
 "complete current word with tab, looking down for matches
 "use ctrl+v tab if you need an actual tab
 inoremap <TAB> <C-N>
