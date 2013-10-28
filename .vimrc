@@ -72,6 +72,7 @@ set fillchars=fold:\           " Don't append hyphens - at the end of folds, use
 set foldmethod=indent          " Autocreate folds based on indentation, use zc and zo to fold/unfold
 set foldlevel=20               " Don't close all folds immediately
 set backspace=indent,eol,start " Always allow backspace
+set whichwrap+=<,>,h,l         " No idea, maybe helps fix backspace
 set wildmenu                   " Use nice tab autocomplete when opening new files
 set wildmode=list:longest      " with :sp or :vs for horizontal and vertical splits
 set colorcolumn=80             " visually enforce the 80 column limit while coding
@@ -81,8 +82,19 @@ set splitbelow                 " unsurprising splits
 set splitright                 " down and to the right
 set laststatus=2               " status always
 set lazyredraw                 " redraw async so UI is responsive during draw lag
+set magic                      " less surprising regex escapes
+set noerrorbells
+set novisualbell
+set t_vb=                      " no idea, fewer error bells?
+set tm=500                     " no idea, fewer error whistles?
+set ffs=unix,dos,mac           " nix is prefered filetype
+set nobackup                   " git is good enough for backups
+set nowb                       " git is good enough for backups
+set noswapfile                 " git is good enough for backups
+set viminfo^=%                 " Remember info about open buffers on close
 "set clipboard=unnamedplus     " system buffer is used for copy/yank and paste/put
-
+let mapleader = ','            " \ is now ,
+let g:mapleader = ','          " \ is now ,
 let g:neocomplete#enable_at_startup       = 1    " better autocomplete enabled
 let g:neocomplete#enable_smart_case       = 1    " no idea ... sounds good right?
 let g:vimfiler_as_default_explorer        = 1    " vimfiler in Unite is default explorer
@@ -158,16 +170,17 @@ imap jj <Esc>
 imap kk <Esc>
 " ctrl+c copy (not yank) in mac
 vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
+" Remove the Windows ^M - when the encodings gets messed up
+nmap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+" Quickly open a buffer for scribble notes
+map <leader>q :sp ~/chalkboard<cr>
+" Search for selected text with *
+vmap <silent> * :call VisualSelection('f')<CR>
+" \r Search and replace the selected text
+vmap <silent> <leader>r :call VisualSelection('replace')<CR>
 
 " bugfix, crontab must be edited in place
 au BufEnter /private/tmp/crontab.* setl backupcopy=yes
-
-" Search for selected text with *
-vmap <silent> * :<C-U>
-      \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-      \gvy/<C-R><C-R>=substitute(
-      \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-      \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " Create parent directories on save if they don't exist
 function! s:MkNonExDir(file, buf)
@@ -235,4 +248,38 @@ function! Preserve(command) " delete trailing whitespace on write
   execute a:command
   let @/=_s
   call cursor(l, c)
+endfunction
+
+" Return to last edit position when opening files
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" Visual find and replace
+function! VisualSelection(direction) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
 endfunction
