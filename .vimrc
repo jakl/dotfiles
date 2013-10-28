@@ -216,7 +216,7 @@ augroup BWCCreateDir
   autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
-" Handle paste more intelligently - cmd+v or ctrl+v in insert mode
+" Handle system paste more intelligently
 if exists('$ITERM_PROFILE') || exists('$TMUX')
   let &t_ti = "\<Esc>[?2004h" . &t_ti
   let &t_te = "\<Esc>[?2004l" . &t_te
@@ -259,3 +259,13 @@ endif
 augroup filetypedetect
   au BufRead,BufNewFile *.confluencewiki set filetype=confluencewiki
 augroup END
+
+autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
+function! Preserve(command) " delete trailing whitespace on write
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  execute a:command
+  let @/=_s
+  call cursor(l, c)
+endfunction
