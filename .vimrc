@@ -1,24 +1,39 @@
-" #### DO THIS FIRST ####
-"     # install git # brew install git # apt-get install git
-"     git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-"     mkdir ~/.vim/undodir
+" #### REQUIREMENTS #####
+"   git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+"   mkdir ~/.vim/undodir
 " #######################
 
-" BundleInstall! updates all bundles
-" BundleClean!   removes data of old bundles
-
-if has('vim_starting')
+if has('vim_starting') " neobundle keeps my vim packages in line since 1895
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-
 call neobundle#rc(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundleCheck
-
-" Recommended to install from shougo, handles asyn-background jobs
+NeoBundle  'Shougo/unite.vim'                 "  powerful & interactive entity listings
+NeoBundle  'itchyny/lightline.vim'            "  Better status bars
+NeoBundle  'danro/rename.vim'                 "  :Rename new_file_name
+NeoBundle  'rking/ag.vim'                     "  :Ag 'file search regex in quotes ..\w*..'
+NeoBundle  'tpope/vim-surround'               "  cs'<div> changes single quotes to div tags
+NeoBundle  'tomtom/tcomment_vim'              "  gc toggles comments
+NeoBundle  'thoughtbot/vim-rspec'             "  \f runs rspec on current file
+NeoBundle  'tpope/vim-dispatch'               "  Run async commands in tmux splits
+NeoBundle  'Shougo/neocomplete.vim'           "  Faster autocomplete - requires +lua
+NeoBundle  'Shougo/neosnippet'                "  Autocomplete common code structures
+NeoBundle  'honza/vim-snippets.git'           "  community contributed snippets
+NeoBundle  'kchmck/vim-coffee-script'         "  highlight
+NeoBundle  'juvenn/mustache'                  "  highlight
+NeoBundle  'digitaltoad/vim-jade'             "  highlight
+NeoBundle  'wavded/vim-stylus'                "  highlight
+NeoBundle  'derekwyatt/vim-scala'             "  highlight
+NeoBundle  'pangloss/vim-javascript'          "  highlight
+NeoBundle  'vim-ruby/vim-ruby'                "  highlight
+NeoBundle  'vim-scripts/confluencewiki.vim'   "  highlight
+NeoBundle  'tpope/vim-repeat'                 "  bugfix
+NeoBundle  'tsaleh/vim-matchit'               "  bugfix
+NeoBundle  'tpope/vim-rails'                  "  shortcuts for navigating/generating rails files
+NeoBundle  'Shougo/vimfiler.vim'              "  better file browser
+NeoBundle  'nathanaelkane/vim-indent-guides'  "  color indents
+NeoBundle  'vim-scripts/bufkill.vim'          "  :BD delete buffer without closing split
+" asyn-background job support
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -27,77 +42,17 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
+NeoBundleCheck " auto install above packages
+" Some day check out these
+"NeoBundle 'vim-scripts/dbext.vim' " database adapter
+"NeoBundle 'tpope/vim-fugitive'    " git integration
 
-NeoBundle 'Shougo/unite.vim'
-" Search/select/preview - to the maximum awesome - files/buffers/yanks/...
+filetype off                   " Fix for syntax highlighting
+filetype plugin indent on      " detect filetype, indent, load respective plugins
+syntax enable                  " Local scope syntax highlighting
 
-NeoBundle 'itchyny/lightline.vim'
-" Better status bars
-
-NeoBundle 'danro/rename.vim'
-" :Rename new_file_name
-
-NeoBundle 'rking/ag.vim'
-" :Ag 'any \w* search pattern'
-
-NeoBundle 'majutsushi/tagbar'
-" \t shows method names for current file/class/module
-
-NeoBundle 'tpope/vim-surround'
-" cs'<div> changes single quotes to div tags
-
-NeoBundle 'tomtom/tcomment_vim'
-" gc toggles comments
-
-NeoBundle 'thoughtbot/vim-rspec'
-" \f runs rspec on current file
-
-NeoBundle 'tpope/vim-dispatch'
-" Support for async commands in tmux splits
-
-NeoBundle 'Shougo/neocomplete.vim'
-" Faster autocomplete - requires +lua
-
-NeoBundle 'Shougo/neosnippet'
-" Autocomplete blocks of commonly typed code structures
-
-NeoBundle 'honza/vim-snippets.git'
-" Aggregation of community contributed snippets
-
-" Highlight and properly indent more filetypes
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'juvenn/mustache'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'wavded/vim-stylus'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'vim-scripts/confluencewiki.vim'
-
-" Intuitive behavior fixes
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tsaleh/vim-matchit'
-
-NeoBundle 'tpope/vim-rails'
-" Helpful vim shortcuts for navigating and generating rails files
-
-NeoBundle 'Shougo/vimfiler.vim'
-" File Browser in Unite
-
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" Color each indentation level
-
-NeoBundle 'vim-scripts/bufkill.vim'
-" :BD delete buffers without closing window splits
-
-
-" Cool plugins I havn't learned/made habit yet
-"NeoBundle 'vim-scripts/dbext.vim'
-"NeoBundle 'tpope/vim-fugitive'
-
-" ~/.vim/undodir/      directory must exist
 set undodir=~/.vim/undodir     " persistent undos between editing sessions
-set undofile
+set undofile                   " enable undo persistence
 set number                     " line numbers
 set tabstop=2                  " spaces for a tab
 set shiftwidth=2               " spaces for indent
@@ -105,9 +60,6 @@ set softtabstop=2              " backspace deletes spaces that filled for tab
 set expandtab                  " use spaces rather than tabs
 set smartindent                " indents after {
 set autoindent                 " keep the current indent for new lines
-filetype off                   " Fix for syntax highlighting
-filetype plugin indent on      " detect filetype, indent, load respective plugins
-syntax enable                  " Local scope syntax highlighting
 set ignorecase                 " ignore case searches
 set incsearch                  " search while typing
 set hlsearch                   " highlight searches
