@@ -17,8 +17,6 @@ NeoBundle  'tomtom/tcomment_vim'              "  gc toggles comments
 NeoBundle  'thoughtbot/vim-rspec'             "  \f runs rspec on current file
 NeoBundle  'tpope/vim-dispatch'               "  Run async commands in tmux splits
 NeoBundle  'Shougo/neocomplete.vim'           "  Faster autocomplete - requires +lua
-NeoBundle  'Shougo/neosnippet'                "  Autocomplete common code structures
-NeoBundle  'honza/vim-snippets.git'           "  community contributed snippets
 NeoBundle  'kchmck/vim-coffee-script'         "  highlight
 NeoBundle  'juvenn/mustache'                  "  highlight
 NeoBundle  'digitaltoad/vim-jade'             "  highlight
@@ -94,7 +92,6 @@ let g:indent_guides_auto_colors           = 0    " don't use weird highlight col
 let g:unite_source_history_yank_enable    = 1    " Enable yank history
 let g:unite_source_grep_command           = 'ag' " use the silver searcher, speedy
 let g:unite_source_grep_default_opts      = '-i --nocolor --nogroup --hidden'
-let gneosnippet#snippets_directory        = '~/.vim/bundle/vim-snippets, ~/.vim/snippets'
 let g:rspec_command                       = 'Start! spring rspec -- {spec} ; bash' " rspec with spring
 
 colorscheme elflord             " no dark blue, but instead use pretty syntax colors
@@ -104,88 +101,69 @@ hi Folded ctermbg=none          " Folds respect terminal transparency
 hi clear VertSplit              " make vert split line thinner
 
 " search buffers
-nnoremap <space>b :Unite -quick-match buffer<cr>
-
-" Save and query yank history
-let g:unite_source_history_yank_enable = 1
-nnoremap <space>y :Unite history/yank<cr>
-
+nmap <space>b :Unite -quick-match buffer<cr>
+" search yank history
+nmap <space>y :Unite history/yank<cr>
 " search file names
-nnoremap <space>f :Unite -auto-preview -start-insert file_rec/async<cr>
-
+nmap <space>f :Unite -auto-preview -start-insert file_rec/async<cr>
 " search file contents
-nnoremap <space>/ :Unite -auto-preview -start-insert grep:.<cr>
-
-" Snippet, complete code blocks
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-"complete current word with tab, looking down for matches
-"use ctrl+v tab if you need an actual tab
-inoremap <TAB> <C-N>
-
-" Rspec.vim mappings
+nmap <space>/ :Unite -auto-preview -start-insert grep:.<cr>
+" autocomplete current word with tab
+imap <TAB> <C-N>
+" rspec current file
 map <silent> <leader>f :call RunCurrentSpecFile()<CR>
+" rspec current block
 map <silent> <leader>s :call RunNearestSpec()<CR>
+" rspec entire project
 map <silent> <leader>a :call RunAllSpecs()<CR>
-let g:rspec_command = "Start! spring rspec -- {spec} ; bash"
-
-"r replaces visual selection with yank's buffer
+" replace visual selection with current yank
 vmap <silent> r "_dP
-
-"Use ctrl+h,j,k,l to move among split buffers
-nmap <silent> <C-k> :wincmd k<CR>
-nmap <silent> <C-j> :wincmd j<CR>
+" ctrl+h move to left split
 nmap <silent> <C-h> :wincmd h<CR>
+" ctrl+j move to below split
+nmap <silent> <C-j> :wincmd j<CR>
+" ctrl+k move to above split
+nmap <silent> <C-k> :wincmd k<CR>
+" ctrl+l move to right split
 nmap <silent> <C-l> :wincmd l<CR>
-
-"ctrl+n/p to switch buffers, same as irssi and tmux, next/previous
+" ctrl+n move to next buffer
 nmap <silent> <C-n> :BF<CR>
+" ctrl+p move to previous buffer
 nmap <silent> <C-p> :BB<CR>
+" ctrl+c close current buffer (not split)
 nmap <silent> <C-c> :BD<CR>
-
-"\z will close all folds at current level, zR opens all folds
+" \z fold current indentation, zR to undo
 map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr>
-
-" \c will copy current file to new name in its directory
+" \c copy current file within it's dir
 map <leader>c :!cp % $(dirname %)/
-
-" \w will save! current file
+" \w save file
 map <silent> <leader>w :w!<cr>
-
-"yank file name
+" \y yank current file's name
 map <silent> <leader>y :let @" = expand("%")<cr>
-
-"disable line numbers
+" F3 toggle line numbers
 nmap <F3> :set invnumber<CR>
-
-"reload vimrc
+" \r reload this vimrc
 map <silent> <leader>r :source $MYVIMRC<cr>
-
-"j and k move inside wrapped lines as well
-nnoremap j gj
-nnoremap k gk
-
-" no more annoying command history popup
-nnoremap q: :
-
+" j moves down within a wrapped line
+nmap j gj
+" k moves up within a wrapped line
+nmap k gk
+" annoying command history popup blocked
+nmap q: :
 " no more annoying ... whatever shift k did
-nnoremap K <NOP>
-
-"Alternate esc characters
+nmap K <NOP>
+" jj leave insert mode, save a pinky
 imap jj <Esc>
+" kk leave insert mode, save a pinky
 imap kk <Esc>
+" ctrl+c copy (not yank) in mac
+vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
 
-"crontab must be edited in place
+" bugfix, crontab must be edited in place
 au BufEnter /private/tmp/crontab.* setl backupcopy=yes
 
-"ctrl+c in visual mode will copy to mac system buffer
-vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
-"set clipboard=unnamedplus "system buffer is used for copy/yank and paste/put
-
 " Search for selected text with *
-vnoremap <silent> * :<C-U>
+vmap <silent> * :<C-U>
       \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
       \gvy/<C-R><C-R>=substitute(
       \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
