@@ -107,6 +107,7 @@ let g:unite_source_grep_default_opts      = '-i --nocolor --nogroup --hidden'
 let g:rspec_command                       = 'Start! spring rspec -- {spec} ; bash' " rspec with spring
 
 colorscheme elflord             " no dark blue, but instead use pretty syntax colors
+hi LineNr ctermfg=blue
 hi ColorColumn ctermbg=235      " 80th column is colored dark dark gray
 hi IndentGuidesEven ctermbg=235 " indent highlight is dark dark gray
 hi Folded ctermbg=none          " Folds respect terminal transparency
