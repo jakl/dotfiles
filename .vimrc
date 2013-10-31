@@ -126,6 +126,8 @@ set splitbelow                 " unsurprising splits
 set splitright
 set laststatus=2               " status always
 set lazyredraw                 " redraw async so UI is responsive during draw lag
+set encoding=utf-8
+setglobal fileencoding=utf-8
 let g:neocomplete#enable_at_startup = 1 " better autocomplete enabled
 let g:neocomplete#enable_smart_case = 1 " no idea ... sounds good right?
 let g:unite_source_grep_command="ag" " use the silver searcher, speedy
