@@ -8,3 +8,5 @@
   editor = vim
 [init]
 	templatedir = ~/.git_template
+[diff "l10n"]
+    textconv = "iconv -f utf-16 -t utf-8"

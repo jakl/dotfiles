@@ -7,7 +7,7 @@ alias update='sudo apt-get update'
 alias upgrade='sudo apt-get dist-upgrade'
 
 USER_NAME=jakl
-alias irc='irssi -n $USER_NAME -c irc.freenode.com'
+alias irc='irssi -n $USER_NAME -c irc.freenode.org'
 alias v='vi -O'
 alias c='cd'
 alias l='ls'
@@ -30,6 +30,7 @@ alias migrate='spring rake db:migrate && RAILS_ENV=test spring rake db:migrate'
 alias rt='rails c test'
 alias rc='spring rails console'
 alias dieschema='git reset db/schema.rb && git checkout db/schema.rb'
+alias gad='guard start -ig livereload rails'
 
 #### GIT ####
 alias gs='git status'

@@ -25,6 +25,7 @@ NeoBundle  'derekwyatt/vim-scala'             "  highlight
 NeoBundle  'pangloss/vim-javascript'          "  highlight
 NeoBundle  'vim-ruby/vim-ruby'                "  highlight
 NeoBundle  'vim-scripts/confluencewiki.vim'   "  highlight
+NeoBundle  'slim-template/vim-slim'           "  highlight
 NeoBundle  'tpope/vim-repeat'                 "  bugfix
 NeoBundle  'tsaleh/vim-matchit'               "  bugfix
 NeoBundle  'tpope/vim-rails'                  "  shortcuts for navigating/generating rails files
@@ -236,9 +237,10 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-" Autodetect confluence markup better
+" Autodetect confluence/slim markup better
 augroup filetypedetect
   au BufRead,BufNewFile *.confluencewiki set filetype=confluencewiki
+  au BufNewFile,BufRead *.slim set filetype=slim
 augroup END
 
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
