@@ -83,6 +83,8 @@ set splitbelow                 " unsurprising splits
 set splitright                 " down and to the right
 set laststatus=2               " status always
 set lazyredraw                 " redraw async so UI is responsive during draw lag
+set encoding=utf-8
+setglobal fileencoding=utf-8
 set magic                      " less surprising regex escapes
 set noerrorbells
 set novisualbell
