@@ -30,7 +30,8 @@ alias migrate='spring rake db:migrate && RAILS_ENV=test spring rake db:migrate'
 alias rt='rails c test'
 alias rc='spring rails console'
 alias dieschema='git reset db/schema.rb && git checkout db/schema.rb'
-alias gad='guard start -ig livereload rails'
+alias gad='bundle exec guard start -ig livereload rails'
+alias rspec='bundle exec rspec'
 
 #### GIT ####
 alias gs='git status'

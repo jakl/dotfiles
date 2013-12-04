@@ -14,7 +14,7 @@ NeoBundle  'danro/rename.vim'                 "  :Rename new_file_name
 NeoBundle  'rking/ag.vim'                     "  :Ag 'file search regex in quotes ..\w*..'
 NeoBundle  'tpope/vim-surround'               "  cs'<div> changes single quotes to div tags
 NeoBundle  'tomtom/tcomment_vim'              "  gc toggles comments
-NeoBundle  'thoughtbot/vim-rspec'             "  \f runs rspec on current file
+NeoBundle  'thoughtbot/vim-rspec'             "  ,f runs rspec on current file
 NeoBundle  'tpope/vim-dispatch'               "  Run async commands in tmux splits
 NeoBundle  'Shougo/neocomplete.vim'           "  Faster autocomplete - requires +lua
 NeoBundle  'kchmck/vim-coffee-script'         "  highlight
@@ -23,6 +23,8 @@ NeoBundle  'digitaltoad/vim-jade'             "  highlight
 NeoBundle  'wavded/vim-stylus'                "  highlight
 NeoBundle  'derekwyatt/vim-scala'             "  highlight
 NeoBundle  'pangloss/vim-javascript'          "  highlight
+NeoBundle  'jelera/vim-javascript-syntax', {
+   \ 'autoload':{'filetypes':['javascript']}} "  highlight
 NeoBundle  'vim-ruby/vim-ruby'                "  highlight
 NeoBundle  'vim-scripts/confluencewiki.vim'   "  highlight
 NeoBundle  'slim-template/vim-slim'           "  highlight
@@ -59,6 +61,7 @@ set softtabstop=2              " backspace deletes spaces that filled for tab
 set expandtab                  " use spaces rather than tabs
 set smartindent                " indents after {
 set autoindent                 " keep the current indent for new lines
+set showbreak=\ \ \ \ \ \ \ \ \ \ \ \ " wrap text with 12 spaces of indentation
 set ignorecase                 " ignore case searches
 set incsearch                  " search while typing
 set hlsearch                   " highlight searches
@@ -98,7 +101,7 @@ set viminfo^=%                 " Remember info about open buffers on close
 "set clipboard=unnamedplus     " system buffer is used for copy/yank and paste/put
 let mapleader = ','            " \ is now ,
 let g:mapleader = ','          " \ is now ,
-let g:neocomplete#enable_at_startup       = 1    " better autocomplete enabled
+"let g:neocomplete#enable_at_startup       = 1    " better autocomplete enabled ... but error
 let g:neocomplete#enable_smart_case       = 1    " no idea ... sounds good right?
 let g:vimfiler_as_default_explorer        = 1    " vimfiler in Unite is default explorer
 let g:indent_guides_enable_on_vim_startup = 1    " visually highlight indents
@@ -148,17 +151,17 @@ nmap <silent> <C-n> :BF<CR>
 nmap <silent> <C-p> :BB<CR>
 " ctrl+c close current buffer (not split)
 nmap <silent> <C-c> :BD<CR>
-" \z fold current indentation, zR to undo
+" ,z fold current indentation, zR to undo
 map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr>
-" \c copy current file within it's dir
+" ,c copy current file within it's dir
 map <leader>c :!cp % $(dirname %)/
-" \w save file
+" ,w save file
 map <silent> <leader>w :w!<cr>
-" \y yank current file's name
+" ,y yank current file's name
 map <silent> <leader>y :let @" = expand("%")<cr>
 " F3 toggle line numbers
 nmap <F3> :set invnumber<CR>
-" \r reload this vimrc
+" ,r reload this vimrc
 map <silent> <leader>r :source $MYVIMRC<cr>
 " j moves down within a wrapped line
 nmap j gj
@@ -180,7 +183,7 @@ nmap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 map <leader>q :sp ~/chalkboard<cr>
 " Search for selected text with *
 vmap <silent> * :call VisualSelection('f')<CR>
-" \r Search and replace the selected text
+" ,r Search and replace the selected text
 vmap <silent> <leader>r :call VisualSelection('replace')<CR>
 
 " bugfix, crontab must be edited in place
