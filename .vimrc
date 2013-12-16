@@ -34,6 +34,7 @@ NeoBundle  'tpope/vim-rails'                  "  shortcuts for navigating/genera
 NeoBundle  'Shougo/vimfiler.vim'              "  better file browser
 NeoBundle  'nathanaelkane/vim-indent-guides'  "  color indents
 NeoBundle  'vim-scripts/bufkill.vim'          "  :BD delete buffer without closing split
+NeoBundle  'Keithbsmiley/investigate.vim'     "  open documentation from code
 " asyn-background job support
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
@@ -102,6 +103,8 @@ set viminfo^=%                 " Remember info about open buffers on close
 let mapleader = ','            " \ is now ,
 let g:mapleader = ','          " \ is now ,
 "let g:neocomplete#enable_at_startup       = 1    " better autocomplete enabled ... but error
+let g:investigate_use_dash=1                     " K opens dash documentation
+let g:investigate_dash_for_ruby="rails"          " treat ruby as rails for docs
 let g:neocomplete#enable_smart_case       = 1    " no idea ... sounds good right?
 let g:vimfiler_as_default_explorer        = 1    " vimfiler in Unite is default explorer
 let g:indent_guides_enable_on_vim_startup = 1    " visually highlight indents
@@ -185,6 +188,8 @@ map <leader>q :sp ~/chalkboard<cr>
 vmap <silent> * :call VisualSelection('f')<CR>
 " ,r Search and replace the selected text
 vmap <silent> <leader>r :call VisualSelection('replace')<CR>
+" K opens documentation for method name under cursor
+nnoremap K :call investigate#Investigate()<cr>
 
 " bugfix, crontab must be edited in place
 au BufEnter /private/tmp/crontab.* setl backupcopy=yes
