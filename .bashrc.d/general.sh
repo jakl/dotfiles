@@ -23,6 +23,7 @@ alias nr='repl.history'
 alias cb='cd ~/.bashrc.d/'
 alias ports='sudo fuser -n tcp {1..10000}'
 alias tabs2spaces='column -t -s"	"'
+alias escape=perl\ \-ne\ \'\ chomp\;\ s\/\(\\W\)\/\\\\\$1\/g\;\ print\ \"\$_\\n\"\ \'
 
 #### RAILS ####
 alias rollback='spring rake db:rollback && RAILS_ENV=test spring rake db:rollback'
@@ -30,7 +31,6 @@ alias migrate='spring rake db:migrate && RAILS_ENV=test spring rake db:migrate'
 alias rt='rails c test'
 alias rc='spring rails console'
 alias dieschema='git reset db/schema.rb && git checkout db/schema.rb'
-alias gad='bundle exec guard start -ig livereload rails'
 alias rspec='bundle exec rspec'
 
 #### GIT ####

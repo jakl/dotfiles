@@ -113,7 +113,7 @@ let g:indent_guides_auto_colors           = 0    " don't use weird highlight col
 let g:unite_source_history_yank_enable    = 1    " Enable yank history
 let g:unite_source_grep_command           = 'ag' " use the silver searcher, speedy
 let g:unite_source_grep_default_opts      = '-i --nocolor --nogroup --hidden'
-let g:rspec_command                       = 'Start! spring rspec -- {spec} ; bash' " rspec with spring
+let g:rspec_command                       = 'Start! bundle exec spring rspec -- {spec} ; bash' " rspec with spring
 
 colorscheme elflord             " no dark blue, but instead use pretty syntax colors
 hi LineNr ctermfg=blue
@@ -160,6 +160,8 @@ map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr>
 map <leader>c :!cp % $(dirname %)/
 " ,w save file
 map <silent> <leader>w :w!<cr>
+" ,q instantly quit everything without saving
+map <silent> <leader>q :cq<cr>
 " ,y yank current file's name
 map <silent> <leader>y :let @" = expand("%")<cr>
 " F3 toggle line numbers
@@ -182,8 +184,8 @@ imap kk <Esc>
 vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
 " Remove the Windows ^M - when the encodings gets messed up
 nmap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-" Quickly open a buffer for scribble notes
-map <leader>q :sp ~/chalkboard<cr>
+" Quickly open a buffer to (j)ot down notes
+map <leader>j :sp ~/chalkboard<cr>
 " Search for selected text with *
 vmap <silent> * :call VisualSelection('f')<CR>
 " ,r Search and replace the selected text
