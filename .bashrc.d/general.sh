@@ -123,3 +123,13 @@ toggletouchscreen () {
 expandurl () { #find the final landing page of a short url like t.co/UgSnleeKua
   curl -sIL $1 | grep ^Location: | tail -n1 | sed 's/Location: //'
 }
+
+rootalways() {
+  sudo chown root:wheel `which $1`
+  sudo chmod u+s `which $1`
+}
+
+rootnever() {
+  sudo chown $USER `which $1`
+  sudo chmod u-s `which $1`
+}

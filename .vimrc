@@ -18,7 +18,7 @@ NeoBundle  'thoughtbot/vim-rspec'             "  ,f runs rspec on current file
 NeoBundle  'tpope/vim-dispatch'               "  Run async commands in tmux splits
 NeoBundle  'Shougo/neocomplete.vim'           "  Faster autocomplete - requires +lua
 NeoBundle  'kchmck/vim-coffee-script'         "  highlight
-NeoBundle  'juvenn/mustache'                  "  highlight
+NeoBundle  'mustache/vim-mustache-handlebars' "  highlight
 NeoBundle  'digitaltoad/vim-jade'             "  highlight
 NeoBundle  'wavded/vim-stylus'                "  highlight
 NeoBundle  'derekwyatt/vim-scala'             "  highlight
@@ -158,10 +158,10 @@ nmap <silent> <C-c> :BD<CR>
 map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr>
 " ,c copy current file within it's dir
 map <leader>c :!cp % $(dirname %)/
-" ,w save file
-map <silent> <leader>w :w!<cr>
+" ,w save all files
+map <silent> <leader>w :wa<cr>
 " ,q instantly quit everything without saving
-map <silent> <leader>q :cq<cr>
+map <silent> <leader>q :qa!<cr>
 " ,y yank current file's name
 map <silent> <leader>y :let @" = expand("%")<cr>
 " F3 toggle line numbers
