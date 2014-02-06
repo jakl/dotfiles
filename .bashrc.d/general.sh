@@ -1,12 +1,4 @@
 #!/bin/sh
-alias search='aptitude search'
-alias show='aptitude show'
-alias instal='sudo apt-get install'
-alias remove='sudo apt-get remove'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get dist-upgrade'
-
-USER_NAME=jakl
 alias irc='irssi -n $USER_NAME -c irc.freenode.org'
 alias v='vi -O'
 alias c='cd'
@@ -25,33 +17,6 @@ alias ports='sudo fuser -n tcp {1..10000}'
 alias tabs2spaces='column -t -s"	"'
 alias escape=perl\ \-ne\ \'\ chomp\;\ s\/\(\\W\)\/\\\\\$1\/g\;\ print\ \"\$_\\n\"\ \'
 
-#### RAILS ####
-alias rollback='spring rake db:rollback && RAILS_ENV=test spring rake db:rollback'
-alias migrate='spring rake db:migrate && RAILS_ENV=test spring rake db:migrate'
-alias rt='rails c test'
-alias rc='spring rails console'
-alias dieschema='git reset db/schema.rb && git checkout db/schema.rb'
-alias rspec='bundle exec rspec'
-
-#### GIT ####
-alias gs='git status'
-alias ga='git add -A'
-alias gc='git commit'
-alias gf='git fetch'
-alias gd='git diff --color -w'
-alias gdm='gd --diff-filter=M' #modified contents only, not renames or deletes
-alias gds='gd --staged'
-alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
-alias glm='gl --author=koval'
-alias glg='gl --first-parent'
-alias gph='git push origin HEAD'
-alias gsh='git show --date=relative --color'
-alias gco='git checkout'
-alias gmd='git fetch && git merge origin/deploy'
-alias gmb='git fetch && git merge origin/`git symbolic-ref --short -q HEAD`' #merge a branch named after local branch, from origin
-alias gms='git merge --squash'
-alias gmm='git fetch && git merge origin/master'
-
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -60,76 +25,12 @@ alias ......='cd ../../../../..'
 
 LESS=-iMXR
 COLORFGBG="default;default" #for transparant mutt background
-
-when() {
-  history | grep -i $1 | grep -v when
-}
-
+HISTSIZE=100000
+HISTFILESIZE=100000
+PATH=$PATH:$HOME/bin
+TERM=xterm-256color
+USER_NAME=jakl
 
 if [ -f ~/.my_aliases ]; then
   . ~/.my_aliases
 fi
-
-GIT_PS1_SHOWDIRTYSTATE=1
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ (\1)/'
-}
-get_dir() {
-  pwd | sed -e 's/.*\///'
-}
-get_box() {
-    uname -n | sed -e 's/\..*//'
-}
-
-#make the input line in the terminal only show the deepest dir and git info
-PS1="😸  \$(whoami)@\$(get_box):\$(get_dir) 😸  "
-PS1="\[\033[G\]$PS1" # left align prompt, WARNING: will overwrite output that doesn't end in a newline
-
-HISTSIZE=100000
-HISTFILESIZE=100000
-
-PATH=$PATH:$HOME/bin
-
-TERM=xterm-256color
-
-tunnel () {
-  if [ $# = 4 ]; then
-    LOCAL_PORT=$1
-    HOST_NAME=$2
-    REMOTE_PORT=$3
-    PROXY_HOST=$4
-
-    if [ -z "`nc -z localhost $LOCAL_PORT`" ]; then
-      ssh -N -f -L$LOCAL_PORT:$HOST_NAME:$REMOTE_PORT -l $USER $PROXY_HOST
-    else
-      echo "Port $LOCAL_PORT is already in use"
-    fi
-  else
-    echo "tunnel usage:"
-    echo "   tunnel local_port host_name remote_port proxy_host"
-  fi
-}
-
-repeat () {
-  while true; do $@; sleep 1s; done;
-}
-
-toggletouchscreen () {
-  id=`xinput | grep -i touchscreen | sed 's/.*id=\(..\).*/\1/'`
-  toggle_value=`xinput list-props $id | grep Enabled | tail -c2 | perl -ne '$_ == 1 ? print 0 : print 1'`
-  xinput set-prop $id 'Device Enabled' $toggle_value
-}
-
-expandurl () { #find the final landing page of a short url like t.co/UgSnleeKua
-  curl -sIL $1 | grep ^Location: | tail -n1 | sed 's/Location: //'
-}
-
-rootalways() {
-  sudo chown root:wheel `which $1`
-  sudo chmod u+s `which $1`
-}
-
-rootnever() {
-  sudo chown $USER `which $1`
-  sudo chmod u-s `which $1`
-}
