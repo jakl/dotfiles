@@ -13,8 +13,9 @@ complete -F _g g
 function g {
     if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
         echo 'Usage:'
-        echo '   g                  changes to primary workspace directory'
-        echo '   g <project>        changes to specified project'
+        echo '   g                  cd to primary workspace directory'
+        echo '   g <project>        cd to specified project'
+        echo '   g <search term>    cd to closest match for search term'
         return
     fi
 
@@ -33,6 +34,6 @@ function g {
     if [ -d "$DIR" ]; then
         cd "$DIR"
     else
-        echo "ERROR: project does not exist in $HOME/workspace: $DIR"
+        cd $HOME/workspace/`ls $HOME/workspace | grep $1`
     fi
 }
