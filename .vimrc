@@ -72,7 +72,6 @@ set autoread                   " reload changed files when unedited
 set linebreak                  " wrap lines at natural word dividers
 set title                      " set terminal title to file name
 set nowrapscan                 " don't wrap back to top searches
-set nowrap                     " don't wrap long lines of text. ':set wrap' to reenable
 set fillchars=fold:\           " Don't append hyphens - at the end of folds, use spaces
 set foldmethod=indent          " Autocreate folds based on indentation, use zc and zo to fold/unfold
 set foldlevel=20               " Don't close all folds immediately
@@ -192,6 +191,8 @@ vmap <silent> * :call VisualSelection('f')<CR>
 vmap <silent> <leader>r :call VisualSelection('replace')<CR>
 " K opens documentation for method name under cursor
 nnoremap K :call investigate#Investigate()<cr>
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
 
 " bugfix, crontab must be edited in place
 au BufEnter /private/tmp/crontab.* setl backupcopy=yes
