@@ -21,7 +21,7 @@ function sync_git_branch_dir {
   test -e $GIT_BD/git-bd || git clone https://github.com/nnutter/git-bd $GIT_BD
   git --git-dir=$GIT_BD/.git --work-tree=$GIT_BD pull
   ln -s $GIT_BD/git-bd $BIN/
-  ln -s $GIT_BD/bd.bashrc $HOME/.bashrc.d/
+  ln -s $GIT_BD/git-bd.bashrc $HOME/.bashrc.d/
 }
 
 function install_depricated_git_b_command { #TODO: delete
