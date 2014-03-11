@@ -254,7 +254,8 @@ endif
 " Autodetect confluence/slim markup better
 augroup filetypedetect
   au BufRead,BufNewFile *.confluencewiki set filetype=confluencewiki
-  au BufNewFile,BufRead *.slim set filetype=slim
+  au BufRead,BufNewFile *.slim set filetype=slim
+  au BufRead,BufNewFile *.scss set filetype=css
 augroup END
 
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")

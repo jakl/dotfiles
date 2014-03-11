@@ -1,5 +1,5 @@
 when() {
-  history | grep -i $1 | grep -v when
+  history | grep -i $1 | grep -v when | sed 's/\s*//' | cut -d' ' -f3-999
 }
 
 tunnel () {
