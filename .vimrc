@@ -149,11 +149,11 @@ nmap <silent> <C-k> :wincmd k<CR>
 " ctrl+l move to right split
 nmap <silent> <C-l> :wincmd l<CR>
 " ctrl+n move to next buffer
-nmap <silent> <C-n> :BF<CR>
+nmap <silent> <C-n> :bn<CR>
 " ctrl+p move to previous buffer
-nmap <silent> <C-p> :BB<CR>
-" ctrl+c close current buffer (not split)
-nmap <silent> <C-c> :BD<CR>
+nmap <silent> <C-p> :bp<CR>
+" ctrl+c close current pane
+nmap <silent> <C-c> :q<CR>
 " ,z fold current indentation, zR to undo
 map <silent> <leader>z :let&l:fdl=indent('.')/&sw<cr>
 " ,c copy current file within it's dir

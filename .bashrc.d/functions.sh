@@ -43,3 +43,9 @@ rootnever() {
   sudo chown $USER `which $1`
   sudo chmod u-s `which $1`
 }
+
+whiteboard() {
+  # Make a photo of a whiteboard pretty
+  # https://gist.github.com/lelandbatey/8677901
+  convert "$@" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "whiteboard.$@"
+}

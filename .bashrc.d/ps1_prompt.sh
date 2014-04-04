@@ -10,5 +10,5 @@ get_box() {
 }
 
 #make the input line in the terminal only show the deepest dir and git info
-PS1="😸  \$(whoami)@\$(get_box):\$(get_dir) 😸  "
+PS1="😺  \$(whoami)@\$(get_box):\$(get_dir) 😸  "
 PS1="\[\033[G\]$PS1" # left align prompt, WARNING: will overwrite output that doesn't end in a newline

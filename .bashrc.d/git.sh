@@ -17,3 +17,4 @@ alias gmb='git fetch && git merge origin/`git symbolic-ref --short -q HEAD`' #me
 alias gms='git merge --squash'
 alias gmm='git fetch && git merge origin/master'
 alias grm='git fetch && git rebase origin/master'
+alias gp='git pull'
