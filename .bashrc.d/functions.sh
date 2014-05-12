@@ -30,7 +30,7 @@ toggletouchscreen () {
   xinput set-prop $id 'Device Enabled' $toggle_value
 }
 
-expandurl () { #find the final landing page of a short url like t.co/UgSnleeKua
+urlexpand () { #find the final landing page of a short url like t.co/UgSnleeKua
   curl -sIL $1 | grep ^Location: | tail -n1 | sed 's/Location: //'
 }
 
