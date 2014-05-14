@@ -16,5 +16,6 @@ alias gmd='git fetch && git merge origin/deploy'
 alias gmb='git fetch && git merge origin/`git symbolic-ref --short -q HEAD`' #merge a branch named after local branch, from origin
 alias gms='git merge --squash'
 alias gmm='git fetch && git merge origin/master'
+alias gmmff='git fetch && git merge origin/master --ff-only'
 alias grm='git fetch && git rebase origin/master'
 alias gp='git pull'

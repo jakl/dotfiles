@@ -17,6 +17,8 @@ alias ports='sudo fuser -n tcp {1..10000}'
 alias tabs2spaces='column -t -s"	"'
 alias escape=perl\ \-ne\ \'\ chomp\;\ s\/\(\\W\)\/\\\\\$1\/g\;\ print\ \"\$_\\n\"\ \'
 alias t=tmux
+alias cs='ctags -R'
+alias b='cd ~/.bashrc.d/'
 
 alias ..='cd ..'
 alias ...='cd ../..'

@@ -6,7 +6,31 @@
 [core]
 	excludesfile = ~/.gitignore
   editor = vim
+	whitespace = trailing-space
 [init]
 	templatedir = ~/.git_template
 [diff "l10n"]
     textconv = "iconv -f utf-16 -t utf-8"
+
+[alias]
+# http://stackoverflow.com/questions/591923/make-git-automatically-remove-trailing-whitespace-before-committing
+# Clean trailing whitespace with git fix<tab><tab><enter>
+  fixws-global-tree-and-index = !"\
+    if (! git diff-files --quiet .) && \
+       (! git diff-index --quiet --cached HEAD) ; then \
+      git commit -m FIXWS_SAVE_INDEX && \
+      git add -u :/ && \
+      git commit -m FIXWS_SAVE_TREE && \
+      git rebase --whitespace=fix HEAD~2 && \
+      git reset HEAD~ && \
+      git reset --soft HEAD~ ; \
+    elif (! git diff-files --quiet .) ; then \
+      git add -u :/ && \
+      git commit -m FIXWS_SAVE_TREE && \
+      git rebase --whitespace=fix HEAD~ && \
+      git reset HEAD~ ; \
+    elif (! git diff-index --quiet --cached HEAD) ; then \
+      git commit -m FIXWS_SAVE_INDEX && \
+      git rebase --whitespace=fix HEAD~ && \
+      git reset --soft HEAD~ ; \
+    fi"
