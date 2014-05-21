@@ -1,5 +1,8 @@
 when() {
-  history | grep -i $1 | grep -v when | sed 's/\s*//' | cut -d' ' -f3-999
+  history | grep -i $@ | grep -v when | sed 's/\s*//' | cut -d' ' -f3-999
+}
+recent() {
+  when $@ | grep -v recent | tail | sort | uniq
 }
 
 tunnel () {
