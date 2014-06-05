@@ -37,6 +37,10 @@ urlexpand () { #find the final landing page of a short url like t.co/UgSnleeKua
   curl -sIL $1 | grep ^Location: | tail -n1 | sed 's/Location: //'
 }
 
+urlmoved () { #find where a url "moved" like bit.do/gphoto
+  curl -s $1 | grep moved | sed -r 's/.*"(.*)".*/\1/g'
+}
+
 rootalways() {
   sudo chown root:wheel `which $1`
   sudo chmod u+s `which $1`
