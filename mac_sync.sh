@@ -1,5 +1,7 @@
 function sync_favorite_apps {
-  brew install tmux wget aircrack-ng coreutils curl reattach-to-user-namespace rbenv ruby-build the_silver_searcher irssi nmap ctags
+# http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+  brew install tmux wget aircrack-ng coreutils curl reattach-to-user-namespace rbenv ruby-build the_silver_searcher irssi nmap ctags binutils diffutils ed findutils gawk gnu-indent gnu-sed gnu-tar gnu-which gnutls grep gzip watch rsync svn unzip --default-names
+  brew install wdiff --with-gettext
   brew install git --with-pcre
   brew install vim --override-system-vi --with-perl --with-python --with-ruby
   brew link curl --force
