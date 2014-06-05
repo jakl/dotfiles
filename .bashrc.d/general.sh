@@ -1,6 +1,8 @@
 #!/bin/sh
 alias irc='irssi -n $USER_NAME -c irc.freenode.org'
-alias v='vi -O'
+alias v='gvim -v'
+alias vi='v'
+alias vim='v'
 alias c='cd'
 alias l='ls'
 alias ls='ls -hF --group-directories-first --color=auto --sort=extension'

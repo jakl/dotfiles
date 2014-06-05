@@ -1,4 +1,5 @@
 *.swp
 bd/*
+node_modules/*
 tags
 chalkboard
