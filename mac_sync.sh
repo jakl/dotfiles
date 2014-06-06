@@ -1,6 +1,8 @@
 function sync_favorite_apps {
 # http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
   brew install tmux wget aircrack-ng coreutils curl reattach-to-user-namespace rbenv ruby-build the_silver_searcher irssi nmap ctags binutils diffutils ed findutils gawk gnu-indent gnu-sed gnu-tar gnu-which gnutls grep gzip watch rsync svn unzip --default-names
+  # syntax highlight in terminal: cat code.js | pygmentize
+  brew install https://raw.githubusercontent.com/Homebrew/homebrew/b33e24808f7d430e1b93be8e2ab2dd8e3278cf12/Library/Formula/pygments.rb
   brew install wdiff --with-gettext
   brew install git --with-pcre
   brew install vim --override-system-vi --with-perl --with-python --with-ruby

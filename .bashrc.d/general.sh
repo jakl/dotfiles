@@ -20,6 +20,8 @@ alias escape=perl\ \-ne\ \'\ chomp\;\ s\/\(\\W\)\/\\\\\$1\/g\;\ print\ \"\$_\\n\
 alias t=tmux
 alias cs='ctags -R'
 alias b='cd ~/.bashrc.d/'
+alias less='less -R'
+alias hl='pygmentize -f terminal -g -O bg=dark'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -34,6 +36,11 @@ HISTFILESIZE=100000
 PATH=$PATH:$HOME/bin
 TERM=xterm-256color
 USER_NAME=jakl
+CLICOLOR=1
+GREP_OPTIONS='--color=auto'
+GREP_COLOR='1;32'
+LSCOLORS=ExFxCxDxBxegedabagacad
+
 
 if [ -f ~/.my_aliases ]; then
   . ~/.my_aliases
