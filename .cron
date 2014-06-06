@@ -12,4 +12,4 @@
 * * * * * ~/workspace/batlog/battest.sh
 
 # Each hour update everything
-@hourly npm update -g && brew update && brew upgrade && gem update
+@hourly ~/.cron.sh

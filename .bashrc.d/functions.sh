@@ -60,3 +60,7 @@ whiteboard() {
 f() {
   find -E . -iregex ".*$@.*"
 }
+
+prepend() {
+  cat - "$1" > /tmp/chalkboard && mv /tmp/chalkboard "$1"
+}
