@@ -58,7 +58,7 @@ whiteboard() {
 }
 
 f() {
-  find -E . -iregex ".*$@.*"
+  find . -iregex ".*$@.*"
 }
 
 prepend() {

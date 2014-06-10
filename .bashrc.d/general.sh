@@ -40,6 +40,7 @@ CLICOLOR=1
 GREP_OPTIONS='--color=auto'
 GREP_COLOR='1;32'
 LSCOLORS=ExFxCxDxBxegedabagacad
+unset MAILCHECK
 
 
 if [ -f ~/.my_aliases ]; then
