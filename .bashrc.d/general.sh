@@ -20,7 +20,7 @@ alias escape=perl\ \-ne\ \'\ chomp\;\ s\/\(\\W\)\/\\\\\$1\/g\;\ print\ \"\$_\\n\
 alias t=tmux
 alias cs='ctags -R'
 alias b='cd ~/.bashrc.d/'
-alias less='less -R'
+alias less='less -RS'
 alias hl='pygmentize -f terminal -g -O bg=dark'
 
 alias ..='cd ..'
@@ -29,17 +29,18 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
-LESS=-iMXR
-COLORFGBG="default;default" #for transparant mutt background
-HISTSIZE=100000
-HISTFILESIZE=100000
-PATH=$PATH:$HOME/bin
-TERM=xterm-256color
-USER_NAME=jakl
-CLICOLOR=1
-GREP_OPTIONS='--color=auto'
-GREP_COLOR='1;32'
-LSCOLORS=ExFxCxDxBxegedabagacad
+export LESS=-iMXR
+export COLORFGBG="default;default" #for transparant mutt background
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+export PATH=$PATH:$HOME/bin
+export TERM=xterm-256color
+export USER_NAME=jakl
+export CLICOLOR=1
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
+export LSCOLORS=ExFxCxDxBxegedabagacad
+export NODE_PATH=/usr/local/lib/node_modules
 unset MAILCHECK
 
 
