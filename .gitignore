@@ -3,3 +3,4 @@ bd/*
 node_modules/*
 tags
 chalkboard
+.npmrc
