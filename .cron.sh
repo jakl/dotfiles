@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash -l
+#!/usr/bin/env bash -l
 . ~/.bashrc
 /usr/local/bin/brew update
 /usr/local/bin/brew upgrade

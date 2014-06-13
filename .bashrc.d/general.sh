@@ -41,9 +41,6 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export NODE_PATH=/usr/local/lib/node_modules
+export EDITOR=vim
+export VISUAL=vim
 unset MAILCHECK
-
-
-if [ -f ~/.my_aliases ]; then
-  . ~/.my_aliases
-fi

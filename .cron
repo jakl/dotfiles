@@ -9,7 +9,7 @@
 # └───────────────────────── min (0 - 59)
 
 # Every minute save some battery information
-* * * * * ~/workspace/batlog/battest.sh
+* * * * * ~/workspace/batlog/battest.perl
 
 # Each hour update everything
 @hourly ~/.cron.sh
