@@ -22,6 +22,7 @@ alias cs='ctags -R'
 alias b='cd ~/.bashrc.d/'
 alias less='less -RS'
 alias hl='pygmentize -f terminal -g -O bg=dark'
+alias vc='c ~/.vimrc.d'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -41,6 +42,8 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export NODE_PATH=/usr/local/lib/node_modules
+export VISUAL=vim
+export EDITOR=vim
 unset MAILCHECK
 
 

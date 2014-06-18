@@ -1,3 +1,8 @@
+die () {
+  echo >&2 "$@"
+  exit 1
+}
+
 when() {
   history | grep -i $@ | grep -v when | sed 's/\s*//' | cut -d' ' -f3-999
 }
@@ -23,8 +28,18 @@ tunnel () {
   fi
 }
 
-repeat () {
-  while true; do $@; sleep 1s; done;
+every () {
+  local seconds=$1
+  shift
+  [[ $seconds =~ ^[0-9]+$ ]] || echo 'Hint: every $seconds $command' && return
+  while true; do $@; sleep $seconds; done;
+}
+
+everyclear () {
+  local seconds=$1
+  shift
+  [[ $seconds =~ ^[0-9]+$ ]] || echo 'Hint: everyclear $seconds $command' && return
+  while true; do clear; $@; sleep $seconds; done;
 }
 
 toggletouchscreen () {
