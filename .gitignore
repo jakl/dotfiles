@@ -1,6 +1,7 @@
 *.swp
 bd/*
 node_modules/*
+**/node_modules/*
 tags
 chalkboard
 .npmrc
