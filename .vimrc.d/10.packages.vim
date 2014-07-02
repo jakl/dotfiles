@@ -25,6 +25,8 @@ NeoBundle  'vim-scripts/confluencewiki.vim'   "  highlight
 NeoBundle  'slim-template/vim-slim'           "  highlight
 NeoBundle  'tpope/vim-repeat'                 "  bugfix
 NeoBundle  'tmhedberg/matchit'                "  bugfix
+NeoBundle  'kana/vim-textobj-user'            "  support new text objects
+NeoBundle  'kana/vim-textobj-line'            "  select line: vil
 NeoBundle  'tpope/vim-rails'                  "  shortcuts for navigating/generating rails files
 NeoBundle  'Shougo/vimfiler.vim'              "  better file browser
 NeoBundle  'nathanaelkane/vim-indent-guides'  "  color indents
