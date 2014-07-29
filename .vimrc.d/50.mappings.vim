@@ -12,8 +12,6 @@ imap <TAB> <C-N>
 map <silent> <leader>f :call RunCurrentSpecFile()<CR>
 " rspec current block
 map <silent> <leader>s :call RunNearestSpec()<CR>
-" rspec entire project
-map <silent> <leader>a :call RunAllSpecs()<CR>
 " replace visual selection with current yank
 vmap <silent> r "_dP
 " ctrl+h move to left split
