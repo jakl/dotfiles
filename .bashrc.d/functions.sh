@@ -72,6 +72,12 @@ whiteboard() {
   convert "$@" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "whiteboard.$@"
 }
 
+fd() {
+  local dir=$1
+  shift
+  find $dir -iregex ".*$@.*"
+}
+
 f() {
   find . -iregex ".*$@.*"
 }
