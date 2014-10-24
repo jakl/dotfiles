@@ -23,6 +23,7 @@ alias b='cd ~/.bashrc.d/'
 alias less='less -RS'
 alias hl='pygmentize -f terminal -g -O bg=dark'
 alias vc='c ~/.vimrc.d'
+alias aq='ag -Q'
 
 alias ..='cd ..'
 alias ...='cd ../..'
