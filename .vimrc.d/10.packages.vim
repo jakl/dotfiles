@@ -11,7 +11,7 @@ NeoBundle  'tpope/vim-surround'               "  cs'<div> changes single quotes 
 NeoBundle  'tomtom/tcomment_vim'              "  gc toggles comments
 NeoBundle  'thoughtbot/vim-rspec'             "  ,f runs rspec on current file
 NeoBundle  'tpope/vim-dispatch'               "  Run async commands in tmux splits
-NeoBundle  'Shougo/neocomplete.vim'           "  Faster autocomplete - requires +lua
+"NeoBundle  'Shougo/neocomplete.vim'           "  Faster autocomplete - requires +lua
 NeoBundle  'kchmck/vim-coffee-script'         "  highlight
 NeoBundle  'mustache/vim-mustache-handlebars' "  highlight
 NeoBundle  'digitaltoad/vim-jade'             "  highlight

@@ -24,6 +24,7 @@ alias less='less -RS'
 alias hl='pygmentize -f terminal -g -O bg=dark'
 alias vc='c ~/.vimrc.d'
 alias aq='ag -Q'
+alias grep='grep --color=auto'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -35,11 +36,9 @@ export LESS=-iMXR
 export COLORFGBG="default;default" #for transparant mutt background
 export HISTSIZE=100000
 export HISTFILESIZE=100000
-export PATH=$PATH:$HOME/bin
 export TERM=xterm-256color
 export USER_NAME=jakl
 export CLICOLOR=1
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export NODE_PATH=/usr/local/lib/node_modules

@@ -28,7 +28,6 @@ set backspace=indent,eol,start " Always allow backspace
 set whichwrap+=<,>,h,l         " No idea, maybe helps fix backspace
 set wildmenu                   " Use nice tab autocomplete when opening new files
 set wildmode=list:longest      " with :sp or :vs for horizontal and vertical splits
-set colorcolumn=80             " visually enforce the 80 column limit while coding
 set fillchars+=vert:\│         " Split windows with thin pipe
 set scrolloff=8                " keep some lines of context above/below cursor
 set splitbelow                 " unsurprising splits
@@ -62,7 +61,7 @@ let g:unite_source_history_yank_enable    = 1    " Enable yank history
 let g:unite_source_grep_command           = 'ag' " use the silver searcher, speedy
 let g:unite_source_grep_default_opts      = '-i --nocolor --nogroup --hidden'
 let g:unite_source_rec_async_command      = 'ag --nocolor --nogroup --hidden -g ""'
-let g:rspec_command                       = 'Start! bundle exec spring rspec -- {spec} ; bash' " rspec with spring
+let g:rspec_command                       = 'Start! rspec -- {spec} ; bash' " rspec with spring
 
 colorscheme elflord             " no dark blue, but instead use pretty syntax colors
 hi LineNr ctermfg=blue

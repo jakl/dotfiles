@@ -70,3 +70,11 @@ nnoremap K :call investigate#Investigate()<cr>
 cmap w!! w !sudo tee > /dev/null %
 " Update vim modules
 map <silent> <leader>u :NeoBundleUpdate! <CR>
+" Disable apostrophe ' whatever the heck it does idek, something about mark
+map <silent> ' <Nop>
+" :df to delete current file
+cmap df call delete(expand('%'))
+" ctrl + \ to follow a ctag reference in a vertical split pane
+map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" ctrl + - to follow a ctag reference in a horizontal split pane
+map <C-_> :sp <CR>:exec("tag ".expand("<cword>"))<CR>
