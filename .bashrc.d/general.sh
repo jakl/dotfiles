@@ -20,7 +20,7 @@ alias escape=perl\ \-ne\ \'\ chomp\;\ s\/\(\\W\)\/\\\\\$1\/g\;\ print\ \"\$_\\n\
 alias t=tmux
 alias cs='ctags -R'
 alias b='cd ~/.bashrc.d/'
-alias less='less -RS'
+alias vb='cd ~/.vimrc.d/'
 alias hl='pygmentize -f terminal -g -O bg=dark'
 alias vc='c ~/.vimrc.d'
 alias aq='ag -Q'
@@ -32,7 +32,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
-export LESS=-iMXR
+export LESS=-iMXRS
 export COLORFGBG="default;default" #for transparant mutt background
 export HISTSIZE=100000
 export HISTFILESIZE=100000

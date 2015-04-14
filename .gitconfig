@@ -35,6 +35,6 @@
   ;     git reset --soft HEAD~ ; \
   ;   fi"
 [diff]
-	noprefix = true
+	noprefix = false
 [push]
 	default = simple

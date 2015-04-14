@@ -4,10 +4,10 @@ die () {
 }
 
 when() {
-  history | grep -i $@ | grep -v when | sed 's/\s*//' | cut -d' ' -f3-999
+  history | grep -i $1 | grep -v when | sed 's/\s*//' | cut -d' ' -f3-999
 }
 recent() {
-  when $@ | grep -v recent | tail | sort | uniq
+  when $1 | grep -v recent | tail | sort | uniq
 }
 
 tunnel () {
@@ -72,14 +72,8 @@ whiteboard() {
   convert "$@" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "whiteboard.$@"
 }
 
-fd() {
-  local dir=$1
-  shift
-  find $dir -iregex ".*$@.*"
-}
-
 f() {
-  find . -iregex ".*$@.*"
+  find ${2-.} -iregex ".*$1.*"
 }
 
 prepend() {
