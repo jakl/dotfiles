@@ -1,6 +1,6 @@
 [user]
 	name = James Koval
-	email = james.ross.koval@gmail.com
+	email = jkoval@twitter.com
 [color]
 	ui = true
 [core]
@@ -36,5 +36,6 @@
   ;   fi"
 [diff]
 	noprefix = false
+  renames = true
 [push]
 	default = simple

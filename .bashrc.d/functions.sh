@@ -79,3 +79,18 @@ f() {
 prepend() {
   cat - "$1" > /tmp/chalkboard && mv /tmp/chalkboard "$1"
 }
+
+export -f die
+export -f when
+export -f recent
+export -f tunnel
+export -f every
+export -f everyclear
+export -f toggletouchscreen
+export -f urlexpand
+export -f urlmoved
+export -f rootalways
+export -f rootnever
+export -f whiteboard
+export -f f
+export -f prepend
