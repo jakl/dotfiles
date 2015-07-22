@@ -61,7 +61,7 @@ let g:unite_source_history_yank_enable    = 1    " Enable yank history
 let g:unite_source_grep_command           = 'ag' " use the silver searcher, speedy
 let g:unite_source_grep_default_opts      = '-i --nocolor --nogroup --hidden'
 let g:unite_source_rec_async_command      = 'ag --nocolor --nogroup --hidden -g ""'
-let g:rspec_command                       = 'Start! rspec -- {spec} ; bash' " rspec with spring
+let g:rspec_command                       = 'Start! rspec -- {spec} 2>/dev/null; bash' " rspec with spring
 
 colorscheme elflord             " no dark blue, but instead use pretty syntax colors
 hi LineNr ctermfg=blue
