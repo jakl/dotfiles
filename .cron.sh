@@ -10,8 +10,9 @@ echo "##### @jakl this is a message I typed on `date` : Starting brew upgrade ##
 /usr/local/bin/brew upgrade --all
 echo "##### @jakl this is a message I typed on `date` : Starting npm update -g #####"
 /usr/local/bin/npm update -g
-echo "##### @jakl this is a message I typed on `date` : Starting export SSH_AUTH_SOCK=/tmp/launch-oxZKfu/Listeners #####"
+echo "##### @jakl this is a message I typed on `date` : Starting export SSH_AUTH_SOCK=/tmp/launch-oxZKfu/Listeners && kinit #####"
 export SSH_AUTH_SOCK=/tmp/launch-oxZKfu/Listeners
+/usr/bin/kinit
 echo "##### @jakl this is a message I typed on `date` : Starting sync-dottools.sh #####"
 /Users/jkoval/.tools-cache/home/aurora/tools/dottools/bin/sync-dottools.sh
 echo "##### @jakl this is a message I typed on `date` : Starting cd ~/workspace/source && git fetch #####"
