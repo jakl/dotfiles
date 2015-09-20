@@ -1,0 +1,12 @@
+ansi=1
+dostream=1
+vcheck=1
+ssl=1
+readline=1
+location=1
+lat=37.78
+long=-122.42
+newline=1
+verify=1
+notifytype=growl
+notifies=dm,reply
