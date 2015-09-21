@@ -73,7 +73,7 @@ map <silent> <leader>u :NeoBundleUpdate! <CR>
 " Disable apostrophe ' whatever the heck it does idek, something about mark
 map <silent> ' <Nop>
 " :df to delete current file
-cmap df call delete(expand('%'))
+" cmap df call delete(expand('%'))
 " ctrl + \ to follow a ctag reference in a vertical split pane
 map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " ctrl + - to follow a ctag reference in a horizontal split pane

@@ -48,6 +48,7 @@ augroup filetypedetect
 augroup END
 
 au BufNewFile,BufRead *.aurora set filetype=perl
+au BufNewFile,BufRead *BUILD set filetype=perl
 
 " Return to last edit position when opening files
 autocmd BufReadPost *

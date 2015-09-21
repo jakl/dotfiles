@@ -33,6 +33,8 @@ NeoBundle  'nathanaelkane/vim-indent-guides'  "  color indents
 NeoBundle  'vim-scripts/bufkill.vim'          "  :BD delete buffer without closing split
 NeoBundle  'Keithbsmiley/investigate.vim'     "  open documentation from code
 NeoBundle  'vim-scripts/closetag.vim'         "  close xml tags with ctrl+_
+NeoBundle  'mattn/flappyvird-vim'             "  flappy bird
+
 " asyn-background job support
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
