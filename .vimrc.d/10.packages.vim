@@ -46,6 +46,7 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 NeoBundleCheck " auto install above packages
 " Some day check out these
-"NeoBundle 'vim-scripts/dbext.vim' " database adapter
-"NeoBundle 'vim-scripts/SQLUtilities.vim' " database adapter
-"NeoBundle 'tpope/vim-fugitive'    " git integration
+"NeoBundle 'vim-scripts/dbext.vim'            " database adapter
+"NeoBundle 'vim-scripts/SQLUtilities.vim'     " database adapter
+"NeoBundle 'tpope/vim-fugitive'               " git integration
+"NeoBundle 'junegunn/fzf'                     " fuzzy-finder written in Go, faster than unite?
