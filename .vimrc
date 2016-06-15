@@ -1,6 +1,6 @@
 " #### REQUIREMENTS #####
 "   git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-"   mkdir ~/.vim/undodir
+"   mkdir -p ~/.vim/undodir
 " #######################
 
 " Source every vim config file in ~/.vimrc.d/

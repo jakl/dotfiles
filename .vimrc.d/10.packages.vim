@@ -1,7 +1,9 @@
 if has('vim_starting') " neobundle keeps my vim packages in line since 1895
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand('~/.vim/bundle/'))
+
+call neobundle#begin()
+
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle  'Shougo/unite.vim'                 "  powerful & interactive entity listings
 NeoBundle  'itchyny/lightline.vim'            "  Better status bars
@@ -50,3 +52,5 @@ NeoBundleCheck " auto install above packages
 "NeoBundle 'vim-scripts/SQLUtilities.vim'     " database adapter
 "NeoBundle 'tpope/vim-fugitive'               " git integration
 "NeoBundle 'junegunn/fzf'                     " fuzzy-finder written in Go, faster than unite?
+
+call neobundle#end()
