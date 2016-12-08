@@ -1,4 +1,4 @@
-export WORKSPACE="$HOME/Code"
+export WORKSPACE="$HOME/workspace"
 
 # If zsh, load bash autocomplete compat lib.
 if [ -n "$ZSH_VERSION" ]; then
