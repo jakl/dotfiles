@@ -1,12 +1,13 @@
 [user]
 	name = James Koval
-	email = jkoval@twitter.com
+	email = jamkov@amazon.com
 [color]
 	ui = true
 [core]
 	excludesfile = ~/.gitignore
   editor = vim
 	whitespace = trailing-space
+	pager = less -FMRiX
 [init]
 	templatedir = ~/.git_template
 [diff "l10n"]
@@ -39,3 +40,5 @@
   renames = true
 [push]
 	default = simple
+[alias]
+	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
