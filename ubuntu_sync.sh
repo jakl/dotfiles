@@ -1,11 +1,12 @@
 function sync_favorite_repos {
-  sudo add-apt-repository -y ppa:chris-lea/node.js
-  sudo add-apt-repository -y ppa:ubuntu-wine/ppa
+  # sudo add-apt-repository -y ppa:chris-lea/node.js
+  # sudo add-apt-repository -y ppa:ubuntu-wine/ppa
+  echo nothing > /dev/null
 }
 
 function sync_favorite_apps {
-  sudo apt-get install -y aptitude git chromium-browser vim-nox pavucontrol curl irssi nmap mumble g++ ssh python-software-properties nodejs npm chromium-codecs-ffmpeg-extra
-  sudo npm install -g coffee-script ecstatic
+  sudo apt-get install -y aptitude git vim-nox curl irssi nmap g++ ssh python-software-properties # chromium-codecs-ffmpeg-extra pavucontrol 
+  sudo npm install -g ecstatic
   sudo apt-get purge -y libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-emailmerge libreoffice-gnome libreoffice-gtk libreoffice-help-en-us libreoffice-impress libreoffice-math libreoffice-style-human libreoffice-style-tango libreoffice-writer thunderbird firefox
   sudo aptitude update -y
   sudo aptitude full-upgrade -y
@@ -21,9 +22,9 @@ function install_aircrack {
 }
 
 function main {
-  sync_favorite_repos
+  # sync_favorite_repos
   sync_favorite_apps
-  install_aircrack
+  # install_aircrack
 }
 
 main &> /dev/null
