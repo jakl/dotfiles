@@ -1,32 +1,11 @@
 BIN=$HOME/bin
 WORKSPACE=$HOME/workspace
-GIT_BD=$WORKSPACE/git-bd
 DOTFILES=$PWD/`dirname $0 | sed 's|^\./||'`
 
 function make_environment_dirs {
   mkdir -p $BIN
-  mkdir -p $GIT_BD
   mkdir -p $HOME/.bashrc.d
   mkdir -p $HOME/.vim
-}
-
-function obtain_git_new_workdir_command {
-  #Copy git-new-workdir from master git repo unless it exists
-  command -v git-new-workdir || curl https://raw.github.com/git/git/master/contrib/workdir/git-new-workdir > $BIN/git-new-workdir
-  chmod +x $BIN/git-new-workdir
-}
-
-function sync_git_branch_dir {
-  #Clone, update, and use nathan's awesome git branch directory command
-  test -e $GIT_BD/git-bd || git clone https://github.com/nnutter/git-bd $GIT_BD
-  git --git-dir=$GIT_BD/.git --work-tree=$GIT_BD pull
-  ln -s $GIT_BD/git-bd $BIN/
-  ln -s $GIT_BD/git-bd.bashrc $HOME/.bashrc.d/
-}
-
-function install_depricated_git_b_command { #TODO: delete
-  curl https://raw.github.com/nnutter/git-branchdir-manager/master/setup | bash
-  source $HOME/.bashrc.d/git-branchdir-manager/git-branchdir-manager.sh
 }
 
 function sync_config_files {
@@ -54,8 +33,6 @@ function setup_vim {
 
 function sync_environment {
   make_environment_dirs
-  obtain_git_new_workdir_command
-  sync_git_branch_dir
   sync_config_files
   setup_rsa
   setup_vim
@@ -64,8 +41,6 @@ function sync_environment {
 function main {
   sync_environment &> /dev/null
   source $HOME/.bashrc
-  uname -a | grep Ubuntu >/dev/null && bash $DOTFILES/ubuntu_sync.sh
-  uname -a | grep MacBook >/dev/null && bash $DOTFILES/mac_sync.sh
 }
 
 main
