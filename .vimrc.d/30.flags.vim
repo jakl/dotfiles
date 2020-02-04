@@ -28,7 +28,7 @@ set backspace=indent,eol,start " Always allow backspace
 set whichwrap+=<,>,h,l         " No idea, maybe helps fix backspace
 set wildmenu                   " Use nice tab autocomplete when opening new files
 set wildmode=list:longest      " with :sp or :vs for horizontal and vertical splits
-set fillchars+=vert:\│         " Split windows with thin pipe
+" set fillchars+=vert:\│         " Split windows with thin pipe
 set scrolloff=8                " keep some lines of context above/below cursor
 set splitbelow                 " unsurprising splits
 set splitright                 " down and to the right
