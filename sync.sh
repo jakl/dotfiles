@@ -45,3 +45,4 @@ function main {
 
 main
 echo Remember to give $HOME/.ssh/id_rsa.pub to github
+echo Also check that ~/.vimrc.d was linked...likely bug
