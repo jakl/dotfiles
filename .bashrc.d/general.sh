@@ -1,6 +1,8 @@
 #!/bin/sh
-alias v=vim
 alias irc='irssi -n $USER_NAME -c irc.freenode.org'
+alias v='nvim'
+alias vi='v'
+alias vim='v'
 alias c='cd'
 alias l='ls'
 alias ls='ls -hF --group-directories-first --color=auto --sort=extension'
@@ -40,6 +42,6 @@ export CLICOLOR=1
 export GREP_COLOR='1;32'
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export NODE_PATH=/usr/local/lib/node_modules
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 unset MAILCHECK
