@@ -8,7 +8,9 @@ echo "##### @jakl cron ran on `date` : Starting source ~/.bashrc #####"
 echo "##### @jakl cron ran on `date` : Starting brew update... #####"
 /usr/local/bin/brew update
 echo "##### @jakl cron ran on `date` : Starting brew upgrade #####"
-/usr/local/bin/brew upgrade --all
+/usr/local/bin/brew upgrade
+echo "##### @jakl cron ran on `date` : Starting brew cleanup #####"
+/usr/local/bin/brew cleanup
 echo "##### @jakl cron ran on `date` : Starting npm update -g #####"
 /usr/local/bin/npm update -g
 echo "##### @jakl cron ran on `date` : Done with everything #####"

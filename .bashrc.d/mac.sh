@@ -11,3 +11,6 @@ alias free=vm_stat\ \|\ perl\ \-ne\ \'\/page\ size\ of\ \(\\d\+\)\/\ and\ \$size
 
 export ANDROID_HOME=~/Library/Android/sdk
 PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+
+# Homebrew executables
+PATH="$PATH:/usr/local/sbin"
