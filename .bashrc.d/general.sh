@@ -1,6 +1,6 @@
 #!/bin/sh
 alias irc='irssi -n $USER_NAME -c irc.freenode.org'
-alias v='nvim'
+alias v='nvim -u ~/.vimrc'
 alias vi='v'
 alias vim='v'
 alias c='cd'
