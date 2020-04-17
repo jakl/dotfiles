@@ -35,11 +35,11 @@ function sync_environment {
   make_environment_dirs
   sync_config_files
   setup_rsa
-  setup_vim
+#  setup_vim
 }
 
 function main {
-  sync_environment &> /dev/null
+  sync_environment # &> /dev/null
   source $HOME/.bashrc
 }
 

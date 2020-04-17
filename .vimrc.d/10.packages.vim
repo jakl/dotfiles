@@ -4,15 +4,15 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/home/jakl/.vim/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/home/jakl/.vim/bundle')
-  call dein#begin('/home/jakl/.vim/bundle')
+if dein#load_state('~/.vim/bundle')
+  call dein#begin('~/.vim/bundle')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/home/jakl/.vim/bundle/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.vim/bundle/repos/github.com/Shougo/dein.vim')
   call dein#add('Shougo/unite.vim') "  powerful & interactive entity listings
   call dein#add('itchyny/lightline.vim') "  Better status bars
   call dein#add('danro/rename.vim') "  :Rename new_file_name

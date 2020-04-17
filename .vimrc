@@ -1,5 +1,5 @@
 " #### REQUIREMENTS #####
-"   git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+" install https://github.com/Shougo/dein.vim
 "   mkdir -p ~/.vim/undodir
 " #######################
 
