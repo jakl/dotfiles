@@ -7,3 +7,4 @@ chalkboard
 .npmrc
 pants-support/profiles/*
 .DS_STORE
+.tags

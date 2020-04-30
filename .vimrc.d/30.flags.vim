@@ -16,7 +16,6 @@ set ignorecase                 " ignore case searches
 set incsearch                  " search while typing
 set hlsearch                   " highlight searches
 set pastetoggle=<F2>           " f2 for paste mode, disabling indent
-set mouse=a                    " mouse compatability
 set autoread                   " reload changed files when unedited
 set linebreak                  " wrap lines at natural word dividers
 set title                      " set terminal title to file name
