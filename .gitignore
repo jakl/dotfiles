@@ -8,3 +8,7 @@ chalkboard
 pants-support/profiles/*
 .DS_STORE
 .tags
+package-lock.json
+docker_postgres.dump
+test/factories
+engines/web/test/internal/db/schema.rb

@@ -44,4 +44,5 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 export NODE_PATH=/usr/local/lib/node_modules
 export EDITOR=nvim
 export VISUAL=nvim
+export PATH=$PATH:~/bin
 unset MAILCHECK

@@ -44,6 +44,7 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('Keithbsmiley/investigate.vim') "  open documentation from code
   call dein#add('vim-scripts/closetag.vim') "  close xml tags with ctrl+_
   call dein#add('mattn/flappyvird-vim') "  flappy bird
+  call dein#add('leafgarland/typescript-vim') "  flappy bird
 
   " Required:
   call dein#end()

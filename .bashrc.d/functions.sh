@@ -80,6 +80,10 @@ prepend() {
   cat - "$1" > /tmp/chalkboard && mv /tmp/chalkboard "$1"
 }
 
+vscodeDoNotBurnMe() {
+  while true; do date; echo killing $(ps aux | grep watcherService | grep -v grep); kill $(ps x | grep watcherService | grep -v grep | cut -f1 -d' ') 2>/dev/null; sleep 6s; done;
+}
+
 export -f die
 export -f when
 export -f recent
@@ -94,3 +98,4 @@ export -f rootnever
 export -f whiteboard
 export -f f
 export -f prepend
+export -f vscodeDoNotBurnMe
