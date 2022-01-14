@@ -1,5 +1,7 @@
 alias spotlightoff='sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist'
 alias spotlighton='sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist'
+alias fin="osascript -e 'say \"fin\"' && osascript -e 'display alert \"script done\"'"
+
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 function notify() {
